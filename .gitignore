@@ -5,5 +5,5 @@
 ~*~
 *.gcda
 *.gcno
-vscore.*
+vgcore.*
 42sh
