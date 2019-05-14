@@ -7,3 +7,4 @@
 *.gcno
 vgcore.*
 42sh
+.history_42sh

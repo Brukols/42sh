@@ -12,7 +12,6 @@ int shell(char **env)
     t_info *shell = prepare_info(env);
 
     if (shell == NULL) {
-        delete_all(shell);
         return (EXIT_ERROR);
     }
 

@@ -12,10 +12,13 @@ t_info *prepare_info(char **env)
     t_info *shell = malloc(sizeof(t_info));
     if (shell == NULL) return (NULL);
     if ((shell->builtin = init_builtin()) == NULL) return (NULL);
+    shell->history = -1;
     shell->command_line = NULL;
     shell->path = NULL;
     shell->env = my_array_cpy(env);
     if (shell->env == NULL)
+        return (delete_all(shell));
+    if ((shell->history = init_history()) == -1)
         return (delete_all(shell));
     shell->exit = 0;
     shell->status = 0;

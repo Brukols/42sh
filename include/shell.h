@@ -114,6 +114,10 @@ void reset_comma(t_info *shell);
 void reset_command(t_info *shell);
 void reset_redirect(t_info *shell);
 
+/* HISTORY */
+int init_history(void);
+
+
 /* SH */
 int my_sh(t_info *shell);
 t_info *prepare_info(char **env);
