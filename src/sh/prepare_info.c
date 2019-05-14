@@ -10,10 +10,8 @@
 t_info *prepare_info(char **env)
 {
     t_info *shell = malloc(sizeof(t_info));
-    if (shell == NULL)
-        return (NULL);
-    if ((shell->builtin = init_builtin()) == NULL)
-        return (NULL);
+    if (shell == NULL) return (NULL);
+    if ((shell->builtin = init_builtin()) == NULL) return (NULL);
     shell->command_line = NULL;
     shell->path = NULL;
     shell->env = my_array_cpy(env);
