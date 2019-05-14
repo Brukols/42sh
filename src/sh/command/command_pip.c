@@ -9,6 +9,7 @@
 
 int command_pip(t_command *command, t_info *shell)
 {
+    int ret = 0;
     t_list *list = command_to_list(command->command, "|<>\n");
     if (list == NULL)
         return (EXIT_FAILURE);
@@ -25,7 +26,7 @@ int command_pip(t_command *command, t_info *shell)
             return (EXIT_FAILURE);
         }
     }
-    wait_end_all_exec(shell);
+    ret = wait_end_all_exec(shell);
     delete_list(list);
-    return (EXIT_SUCCESS);
+    return (ret);
 }
