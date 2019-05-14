@@ -31,7 +31,7 @@ typedef struct s_info
     int fdd;
     int stdin_o;
     int stdou_o;
-
+    int history;
 } t_info;
 
 typedef struct s_list
