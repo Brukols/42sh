@@ -15,10 +15,8 @@ t_info *prepare_info(char **env)
     shell->command_line = NULL;
     shell->path = NULL;
     shell->env = my_array_cpy(env);
-    if (shell->env == NULL) {
-        delete_all(shell);
-        return (NULL);
-    }
+    if (shell->env == NULL)
+        return (delete_all(shell));
     shell->exit = 0;
     shell->status = 0;
     shell->child_pid = 0;

@@ -106,7 +106,7 @@ void test_segfault(t_info *shell);
 void wait_end_all_exec(t_info *shell);
 
 /* FREE FT */
-void delete_all(t_info *shell);
+void *delete_all(t_info *shell);
 void delete_command(t_command *command);
 t_list *delete_list(t_list *list);
 t_builtin **delete_builtin(t_builtin **builtin);

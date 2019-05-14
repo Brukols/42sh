@@ -7,7 +7,7 @@
 
 #include "shell.h"
 
-void delete_all(t_info *shell)
+void *delete_all(t_info *shell)
 {
     if (shell->builtin)
         shell->builtin = delete_builtin(shell->builtin);
@@ -23,4 +23,5 @@ void delete_all(t_info *shell)
     }
     if (shell)
         free(shell);
+    return (NULL);
 }
