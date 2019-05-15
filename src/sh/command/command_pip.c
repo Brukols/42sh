@@ -27,6 +27,7 @@ int command_pip(t_command *command, t_info *shell)
         }
     }
     ret = wait_end_all_exec(shell);
+    my_printf("ret : %i\n", ret);
     delete_list(list);
     return (ret);
 }

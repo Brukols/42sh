@@ -18,6 +18,7 @@ void test_segfault(t_info *shell)
 
 int wait_end_all_exec(t_info *shell)
 {
+    int exit_status = 0;
     waitpid(shell->child_pid, &shell->status, WUNTRACED | WCONTINUED);
     if (WIFSIGNALED(shell->status)) {
         if (WTERMSIG(shell->status) == SIGSEGV) {
@@ -26,5 +27,7 @@ int wait_end_all_exec(t_info *shell)
         if (WTERMSIG(shell->status) == 8)
             my_printe("Floating exception\n");
     }
-
+    if (WIFEXITED(shell->status))
+        exit_status = WEXITSTATUS(shell->status);
+    return (exit_status);
 }

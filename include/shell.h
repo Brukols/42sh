@@ -138,10 +138,15 @@ void sigint_handler(int sig);
 
 /* LIST */
 t_list *create_list(void);
-int check_sep(char c, char *sep);
 t_command *create_command(int len_word, char *str, int i);
+
+int check_sep(char c, char *sep);
 t_command *get_separator(t_command *command, char *str, char *sep, int i);
 t_list *add_to_list(t_list *list, t_command *command);
 t_list *command_to_list(char *str, char *sep);
+
+t_list *command_to_list_double_sep(char *str, char *sep);
+int check_sep_double(char c, char d, char *sep);
+t_command *get_separator_double(t_command *command, char *str, char *sep, int i);
 
 #endif
