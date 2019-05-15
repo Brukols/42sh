@@ -17,10 +17,21 @@
 #include <limits.h>
 #include <string.h>
 #include <fcntl.h>
+#include <stdbool.h>
+#include "macros.h"
+
+typedef struct s_variable
+{
+    char *name;
+    char **arg;
+    struct s_variable *next;
+    struct s_variable *prev;
+} t_variable;
 
 typedef struct s_info
 {
     struct s_builtin **builtin;
+    struct s_variable *variable;
     char **env;
     char *command_line;
     char *path;
@@ -63,6 +74,8 @@ char *search_env(char **env, char *search);
 int verif_arg_env(char **arg);
 int is_in_env(char **env, char *new);
 char **repair_env(char **env);
+int my_unset(t_info *, t_command *);
+int my_set(t_info *, t_command *);
 /*ENV*/
 int my_env(t_info *shell, t_command *command);
 /*CD*/
@@ -143,5 +156,9 @@ t_command *create_command(int len_word, char *str, int i);
 t_command *get_separator(t_command *command, char *str, char *sep, int i);
 t_list *add_to_list(t_list *list, t_command *command);
 t_list *command_to_list(char *str, char *sep);
+
+/* VARIABLE */
+int local_and_env_variable(t_command *, t_info *);
+int cmd_has_a_value(t_command *, t_info *, char *, int);
 
 #endif

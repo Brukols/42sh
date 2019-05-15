@@ -34,6 +34,8 @@ SRC	=	src/main.c	\
 		src/builtin/my_cd/my_cd.c	\
 		src/builtin/my_cd/update_envcd.c	\
 		src/builtin/my_cd/verif_cd.c	\
+		src/builtin/set/my_set.c	\
+		src/builtin/set/my_unset.c	\
 		src/fork/create_process.c	\
 		src/fork/child/redirections/child_redirection.c	\
 		src/fork/child/redirections/double_right_redirection.c	\
@@ -69,6 +71,8 @@ SRC	=	src/main.c	\
 		src/sh/shell.c	\
 		src/signal/prepare_signal.c	\
 		src/signal/signal_handler.c	\
+		src/variable/local_and_env_variable.c	\
+		src/variable/cmd_has_a_value.c		\
 
 OBJ	=	$(SRC:.c=.o)
 
