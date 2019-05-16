@@ -13,11 +13,11 @@ t_list *command_to_list_double_sep(char *str, char *sep)
     t_list *list = NULL;
     if ((list = create_list()) == NULL)
         return (NULL);
-    for (int i = 0; str[i] != '\0'; i++) {
-        if (!check_sep_double(str[i], str[i + 1], sep))
+    for (int i = 0; i < my_strlen(str); i++) {
+        if (!check_sep_double(str, i, sep))
             len_word++;
-        if (!check_sep_double(str[i], str[i + 1], sep)
-        && check_sep_double(str[i + 1], str[i + 2], sep)) {
+        if (!check_sep_double(str, i, sep)
+        && check_sep_double(str, i + 1, sep)) {
             t_command *command = create_command(len_word, str, i);
             if (command == NULL)
                 return (NULL);
