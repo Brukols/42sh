@@ -18,7 +18,7 @@ int parse_command(t_command *command, t_info *shell)
         shell->exit = 1;
         return (EXIT_SUCCESS);
     }
-    if ((verif = local_and_env_variable(command, shell)) != GOOD_VARIABLE)
+    if ((verif = local_and_env_variable(command, shell)) != VARIABLE)
         return (verif);
     if (is_skip_command(command))
         return (EXIT_SUCCESS);

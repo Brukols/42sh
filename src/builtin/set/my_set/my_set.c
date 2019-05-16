@@ -15,10 +15,8 @@ int my_set(t_info *shell, t_command *command)
         return (EXIT_SUCCESS);
     if (verif == EXIT_FAILURE)
         return (EXIT_FAILURE);
-    if ((verif = check_alphanumeric_name(command)) == NOT_ALPHA_NUMERIC)
+    if (check_alphanumeric_name(command) == NOT_ALPHA_NUMERIC)
         return (EXIT_SUCCESS);
-    if (verif == EXIT_FAILURE)
-        return (EXIT_FAILURE);
     for (int i = 1; command->tab_command[i]; i++) {
         if (set_variable(shell, command, i) == EXIT_FAILURE)
             return (EXIT_FAILURE);

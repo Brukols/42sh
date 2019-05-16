@@ -74,8 +74,6 @@ char *search_env(char **env, char *search);
 int verif_arg_env(char **arg);
 int is_in_env(char **env, char *new);
 char **repair_env(char **env);
-int my_unset(t_info *, t_command *);
-int my_set(t_info *, t_command *);
 /*ENV*/
 int my_env(t_info *shell, t_command *command);
 /*CD*/
@@ -100,6 +98,14 @@ int double_right_builtin_redirection(t_info *shell, t_command *command);
 int pip_builtin_redirection(t_info *shell, t_command *command);
 int right_builtin_redirection(t_info *shell, t_command *command);
 int left_builtin_redirection(t_info *shell, t_command *command);
+/* MY_SET */
+int my_set(t_info *, t_command *);
+int delete_quotation_set(t_command *, int);
+int check_alphanumeric_name(t_command *);
+int delete_all_quotation_set(t_command *);
+int set_variable(t_info *, t_command *, int);
+/* MY_UNSET */
+int my_unset(t_info *, t_command *);
 
 /* FORK */
 pid_t create_process(void);
@@ -159,6 +165,11 @@ t_list *command_to_list(char *str, char *sep);
 
 /* VARIABLE */
 int local_and_env_variable(t_command *, t_info *);
-int cmd_has_a_value(t_command *, t_info *, char *, int);
+int remplace_variable(t_command *, t_info *, int, int);
+int remplace_the_name(t_command *, char **, int);
+int parse_command(t_command *, t_info *);
+char **get_value_name(t_info *, char *);
+int change_tab_command(t_command *, char **, int, int);
+bool is_alphanumeric(char);
 
 #endif

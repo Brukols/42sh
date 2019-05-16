@@ -28,9 +28,9 @@ char *delete_one_chara(char *str, int pos)
 
 int check_quote_matched(char *parse, int *n, char *str)
 {
-    for (; str[n] && str[n] != parse; n++);
-    if (!str[n]) {
-        my_printf("Unmatched '%c'.\n", parse);
+    for (; str[*n] && str[*n] != *parse; (*n)++);
+    if (!str[*n]) {
+        my_printf("Unmatched '%c'.\n", *parse);
         return (UNMATCHED_QUOTE);
     }
     return (EXIT_SUCCESS);
@@ -48,10 +48,9 @@ int re_init_tab_command(t_command *cmd, int n, int i, char *str)
 int do_the_delete(t_command *cmd, int i, char *str, int n)
 {
     int verif;
+    char parse = 0;
 
     for (n++; str[n]; n++) {
-        if (init_parse() == EXIT_FAILURE)
-            return (EXIT_FAILURE);
         if (parse == 0 && (str[n] == '"' || str[n] == '\'')) {
             parse = str[n];
             verif = re_init_tab_command(cmd, n, i ,str);
@@ -73,7 +72,6 @@ int delete_quotation_set(t_command *cmd, int i)
 {
     int n = 0;
     char *str = cmd->tab_command[i];
-    char parse = 0;
 
     for (; str[n] && str[n] != '='; n++);
     if (!str[n] || !str[n + 1])

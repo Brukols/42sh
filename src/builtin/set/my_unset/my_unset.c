@@ -7,7 +7,8 @@
 
 #include "shell.h"
 
-int my_unset(t_info *shell, t_command *command)
+int my_unset(__attribute__((unused)) t_info *shell, \
+__attribute__((unused)) t_command *command)
 {
     return (0);
 }
