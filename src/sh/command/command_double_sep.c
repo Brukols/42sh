@@ -2,22 +2,23 @@
 ** EPITECH PROJECT, 2019
 ** 42SH
 ** File description:
-** command_comma
+** command_double_sep
 */
 
 #include "shell.h"
 
-int command_comma(t_info *shell)
+int command_double_sep(t_command *command, t_info *shell)
 {
-    t_list *list = command_to_list(shell->command_line, ";\n");
+    t_list *list = command_to_list_double_sep(command->command, "&&||\n\0");
+
     if (list == NULL)
         return (EXIT_FAILURE);
+
     for (t_command *actual = list->start; actual; actual = actual->next) {
-        if (command_double_sep(actual, shell) == EXIT_FAILURE) {
+        if (command_pip(actual, shell) == EXIT_FAILURE) {
             delete_list(list);
             return (EXIT_FAILURE);
         }
-        reset_comma(shell);
     }
     delete_list(list);
     return (EXIT_SUCCESS);

@@ -23,6 +23,7 @@ t_info *prepare_info(char **env)
     shell->exit = 0;
     shell->status = 0;
     shell->child_pid = 0;
+    shell->gr_pid = 0;
     shell->fdd = 0;
     shell->stdin_o = dup(STDIN_FILENO);
     shell->stdou_o = dup(STDOUT_FILENO);

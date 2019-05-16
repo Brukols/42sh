@@ -60,6 +60,7 @@ SRC	=	src/main.c	\
 		src/list/command_to_list_double/command_to_list_double_sep.c	\
 		src/list/command_to_list_double/get_separator_double.c	\
 		src/sh/command/command_comma.c	\
+		src/sh/command/command_double_sep.c	\
 		src/sh/command/command_pip.c	\
 		src/sh/command/create_tab_command.c	\
 		src/sh/command/command_exec.c	\

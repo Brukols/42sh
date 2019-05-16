@@ -27,6 +27,7 @@ typedef struct s_info
     int exit;
     int status;
     pid_t child_pid;
+    pid_t gr_pid;
     int fd[2];
     int fdd;
     int stdin_o;
@@ -131,6 +132,7 @@ int parse_command(t_command *command, t_info *shell);
 int command_pip(t_command *command, t_info *shell);
 t_list *create_tab_command(t_list *list);
 int is_skip_command(t_command *command);
+int command_double_sep(t_command *command, t_info *shell);
 
 /* SIGNAL */
 int prepare_signal(void);

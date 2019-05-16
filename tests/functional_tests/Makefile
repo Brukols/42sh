@@ -21,6 +21,7 @@ clean:
 fclean:	clean
 	$(RM) my_divzero
 	$(RM) my_segfault
+	$(RM) 42sh
 
 re:	fclean all
 

@@ -78,6 +78,7 @@ CC	=	gcc
 all:	$(NAME)
 
 $(NAME): $(OBJECTS)
+	cp ../42sh functional_tests/
 	$(MAKE) -C functional_tests/
 	$(CC) -o $(NAME) $(OBJECTS) $(LDFLAGS)
 	./$(NAME)
