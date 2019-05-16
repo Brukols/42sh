@@ -20,5 +20,5 @@ int builtin_redirection(t_info *shell, t_command *command)
     if (my_strcmp(command->separator, "<") == 0
         && my_strlen(command->separator) == 1)
         return (left_builtin_redirection(shell, command));
-    return (EXIT_SUCCESS);
+    return (RETURN_SUCCESS);
 }

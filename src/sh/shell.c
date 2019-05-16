@@ -18,10 +18,10 @@ int shell(char **env)
     prepare_signal();
     print_prompt();
 
-    if (my_sh(shell) == EXIT_FAILURE) {
+    if (my_sh(shell) == RETURN_FAILURE) {
         delete_all(shell);
         return (EXIT_ERROR);
     }
     delete_all(shell);
-    return (EXIT_SUCCESS);
+    return (RETURN_SUCCESS);
 }
