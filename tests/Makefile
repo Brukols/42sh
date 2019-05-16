@@ -78,13 +78,16 @@ CC	=	gcc
 all:	$(NAME)
 
 $(NAME): $(OBJECTS)
+	$(MAKE) -C functional_tests/
 	$(CC) -o $(NAME) $(OBJECTS) $(LDFLAGS)
 	./$(NAME)
 
 clean:
+	$(MAKE) -C functional_tests/ clean
 	rm -rf $(OBJECTS)
 
 fclean:	clean
+	$(MAKE) -C functional_tests/ fclean
 	rm -rf $(NAME)
 
 re:	fclean	all
