@@ -15,10 +15,8 @@ char **apply_globbings(char **tab_command)
 
     globbuf.gl_offs = 0;
     while (tab_command[i]) {
-        if (i == 0)
-            glob(tab_command[i], GLOB_DOOFFS | GLOB_NOCHECK, NULL, &globbuf);
-        else
-            glob(tab_command[i], GLOB_DOOFFS | GLOB_APPEND | GLOB_NOCHECK, NULL, &globbuf);
+        glob(tab_command[i], (i == 0 ? GLOB_DOOFFS | GLOB_NOCHECK : \
+GLOB_DOOFFS | GLOB_APPEND | GLOB_NOCHECK), NULL, &globbuf);
         i++;
     }
     if ((tmp = malloc(sizeof(char *) * \
@@ -26,7 +24,6 @@ char **apply_globbings(char **tab_command)
         return NULL;
     i = 0;
     while (globbuf.gl_pathv[i]) {
-        my_putchar('r');
         if ((tmp[i] = my_strdup(globbuf.gl_pathv[i])) == NULL)
             return NULL;
         i++;
