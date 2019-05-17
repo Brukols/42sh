@@ -152,6 +152,7 @@ t_list *command_to_list(char *str, char *sep);
 
 t_list *command_to_list_double_sep(char *str, char *sep);
 int check_sep_double(char *c, int pos, char *sep);
-t_command *get_separator_double(t_command *command, char *str, char *sep, int i);
+t_command *get_separator_double(t_command *command, char *str,
+char *sep, int i);
 
 #endif
