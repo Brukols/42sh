@@ -296,6 +296,18 @@ TESTS=
   echo "./my_segfault"
 [505-END]
 
+[506]
+NAME="Exec a directory"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "./src"
+[506-END]
+
+*******************************
+       SEPARATOR TEST (SOON)
+*******************************
+
 [911]
 NAME="Testing simple pipe"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
