@@ -26,5 +26,5 @@ int child_process(t_info *shell, t_command *command)
             my_printe("%s: %s.\n", command->tab_command[0], strerror(errno));
     }
     delete_all(shell);
-    exit(RETURN_SUCCESS);
+    exit(1);
 }
