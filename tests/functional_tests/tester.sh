@@ -1,5 +1,11 @@
 #!/bin/bash
 
+red=$(tput bold ; tput setaf 1)
+green=$(tput bold ; tput setaf 2)
+yellow=$(tput bold ; tput setaf 3)
+blue=$(tput bold ; tput setaf 6)
+normal=$(tput sgr0)
+
 MYSHELL="$PWD/42sh"
 REFER="/bin/tcsh -f"
 TRAPSIG=0
@@ -90,7 +96,7 @@ load_test()
   then
     if [ $debug -ge 1 ]
     then
-      echo "Test $id ($NAME) : OK"
+      echo "${blue}Test $id${normal} ($NAME) : ${green}OK${normal}"
       if [ $debug -eq 2 ]
       then
         echo "Output $MYSHELL :"
@@ -106,7 +112,7 @@ load_test()
   else
     if [ $debug -ge 1 ]
     then
-      echo "Test $id ($NAME) : KO - Check output in /tmp/test.$$/$id/"
+      echo "${blue}Test $id${normal} ($NAME) : ${red}KO${normal} - Check output in /tmp/test.$$/$id/"
       $MKDIR -p /tmp/test.$$/$id 2>/dev/null
       $CP /tmp/.shell.$$ /tmp/test.$$/$id/mysh.out
       $CP /tmp/.refer.$$ /tmp/test.$$/$id/tcsh.out
