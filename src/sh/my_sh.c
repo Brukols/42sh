@@ -9,7 +9,7 @@
 
 int my_sh(t_info *shell)
 {
-    while ((shell->command_line = get_next_line(0)) != NULL) {
+    while ((shell->command_line = get_next_line(shell->fd_read)) != NULL) {
         if ((shell->env = repair_env(shell->env)) == NULL)
             return (RETURN_FAILURE);
         if (command_comma(shell) == RETURN_FAILURE)

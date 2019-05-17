@@ -13,6 +13,8 @@ void *delete_all(t_info *shell)
         close(shell->history);
         shell->history = -1;
     }
+    if (shell->fd_read != 0)
+        close(shell->fd_read);
     if (shell->builtin)
         shell->builtin = delete_builtin(shell->builtin);
     if (shell->env)
@@ -25,7 +27,6 @@ void *delete_all(t_info *shell)
         free(shell->path);
         shell->path = NULL;
     }
-    if (shell)
-        free(shell);
+    if (shell) free(shell);
     return (NULL);
 }

@@ -33,6 +33,7 @@ typedef struct s_info
     pid_t gr_pid;
     int fd[2];
     int fdd;
+    int fd_read;
     int stdin_o;
     int stdou_o;
     int history;
@@ -124,9 +125,9 @@ int init_history(void);
 
 /* SH */
 int my_sh(t_info *shell);
-t_info *prepare_info(char **env);
+t_info *prepare_info(int argc, char **argv, char **env);
 void print_prompt(void);
-int shell(char **env);
+int shell(int argc, char **argv, char **env);
 /* COMMAND */
 int do_execve(t_info *shell, t_command *command);
 int command_exec(t_command *command, t_info *shell);
