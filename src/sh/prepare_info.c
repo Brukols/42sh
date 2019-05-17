@@ -10,6 +10,7 @@
 int is_scripting(int argc, char **argv)
 {
     int fd = 0;
+    char *shebang = NULL;
 
     if (argc != 2)
         return (fd);
@@ -18,6 +19,9 @@ int is_scripting(int argc, char **argv)
         my_printe("Error with scripting file\n");
         return (0);
     }
+    shebang = get_next_line(fd);
+    if (shebang)
+        free(shebang);
     return (fd);
 }
 
