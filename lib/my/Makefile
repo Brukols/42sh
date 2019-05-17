@@ -14,6 +14,10 @@ SRC	=	array/free_array.c	\
 		array/my_sort_int_array.c	\
 		array/print_array.c	\
 		array/create_array.c	\
+		array/my_arraylen.c	\
+		array/my_arraydup.c	\
+		array/my_arraydup.c	\
+		array/my_realloc_array.c	\
 		getnextline/get_next_line.c	\
 		my_is/my_is_prime.c	\
 		my_is/my_isdigit.c	\

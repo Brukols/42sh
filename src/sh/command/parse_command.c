@@ -16,6 +16,9 @@ int parse_command(t_command *command, t_info *shell)
         shell->exit = 1;
         return (EXIT_SUCCESS);
     }
+    command->tab_command = apply_globbings(command->tab_command);
+    if (command->tab_command == NULL)
+        return (EXIT_ERROR);
     if (is_skip_command(command))
         return (EXIT_SUCCESS);
     if (command_exec(command, shell) == EXIT_FAILURE)

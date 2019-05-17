@@ -8,7 +8,9 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#define NO_GLOBBINGS -1
 #define EXIT_ERROR 84
+#include <glob.h>
 #include "my.h"
 #include <errno.h>
 #include <sys/types.h>
@@ -127,7 +129,7 @@ int parse_command(t_command *command, t_info *shell);
 int command_pip(t_command *command, t_info *shell);
 t_list *create_tab_command(t_list *list);
 int is_skip_command(t_command *command);
-
+char **apply_globbings(char **tab_command);
 /* SIGNAL */
 int prepare_signal(void);
 void sigint_handler(int sig);

@@ -26,6 +26,7 @@ SRC	=	src/main.c	\
 		src/builtin/env/my_unsetenv/exec_unsetenv.c	\
 		src/builtin/env/my_unsetenv/my_unsetenv.c	\
 		src/builtin/env/is_in_env.c	\
+		src/sh/command/globbings.c	\
 		src/builtin/env/repair_env.c	\
 		src/builtin/env/search_env.c	\
 		src/builtin/my_cd/change_dir.c	\
@@ -71,7 +72,7 @@ SRC	=	src/main.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	=	-W -Wall -Wextra -Wshadow -I ./lib/include -I./include
+CFLAGS	=	-W -Wall -Wextra -Wshadow -I ./lib/include -I./include -g
 
 LDFLAGS	=	-lmy -L./lib
 

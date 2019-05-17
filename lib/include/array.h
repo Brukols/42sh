@@ -8,6 +8,8 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
+char **my_arraydup(char **arr);
+int my_arraylen(char **arr);
 char **free_array(char **array);
 int get_size_array(char **array);
 char **my_array_cpy(char **array);
