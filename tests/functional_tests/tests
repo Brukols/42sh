@@ -1,40 +1,54 @@
-[901]
+[001]
 NAME="Nothing"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo ''
-[901-END]
+[001-END]
 
-##TEST
+[002]
+NAME="Simple Exec"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls /dev'
+[002-END]
 
-[902]
-NAME="Exec two command"
+[003]
+NAME="Run Simple Commands"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'ls /etc'
   echo 'cat /etc/resolv.conf'
-[902-END]
+[003-END]
 
-[903]
-NAME="Testing with /usr/bin PATH"
+[004]
+NAME="Wrong Simple Command"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'lzz /etc'
+[004-END]
+
+[101]
+NAME="PATH1 : Testing with /usr/bin PATH"
 SETUP="export TERM=xterm ; PATH='/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'pwd'
-[903-END]
+[101-END]
 
-[904]
-NAME="Testing with /bin PATH"
+[102]
+NAME="PATH2 : Testing with /bin PATH"
 SETUP="export TERM=xterm ; PATH='/bin'"
 CLEAN=""
 TESTS=
   echo 'pwd'
-[904-END]
+[102-END]
 
-[905]
-NAME="run commands"
+[103]
+NAME="PATH3 : run commands"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
@@ -43,7 +57,7 @@ TESTS=
   echo 'ls -l /etc'
   sleep 0.5
   echo 'pwd'
-[905-END]
+[103-END]
 
 [906]
 NAME="setenv and unsetenv"
