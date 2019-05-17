@@ -11,7 +11,7 @@ int change_old_dir(t_info *shell)
 {
     char *old_pwd = search_env(shell->env, "OLDPWD=");
     if (old_pwd == NULL) {
-        my_printe("%s: No such file or directory\n", old_pwd);
+        my_printe("%s: No such file or directory.\n", old_pwd);
         free(old_pwd);
         return -1;
     }

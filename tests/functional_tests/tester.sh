@@ -53,11 +53,11 @@ prepare_test()
 
   echo "#!/bin/bash" > $runnerfn
   echo "$SETUP" >> $runnerfn
-  echo "/bin/bash -c '"$testfn" | "$MYSHELL" ; echo Shell exit with code \$?' > "$shoutfn" 2>&1" >> $runnerfn
+  echo "/bin/bash -c '"$testfn" | "$MYSHELL"' > "$shoutfn" 2>&1" >> $runnerfn
   echo "$CLEAN" >> $runnerfn
   echo "$SETUP" >> $runnerfn
   echo "$TCSHUPDATE" >> $runnerfn
-  echo "/bin/bash -c '"$testfn" | "$REFER" ; echo Shell exit with code \$?' > "$refoutfn" 2>&1" >> $runnerfn
+  echo "/bin/bash -c '"$testfn" | "$REFER"' > "$refoutfn" 2>&1" >> $runnerfn
   echo "$CLEAN" >> $runnerfn
 
   echo "#!/bin/bash" > $testfn

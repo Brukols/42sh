@@ -1,3 +1,7 @@
+*************************
+       BASIC TEST
+*************************
+
 [001]
 NAME="Nothing"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
@@ -31,6 +35,10 @@ TESTS=
   echo 'lzz /etc'
 [004-END]
 
+*************************
+       PATH TEST
+*************************
+
 [101]
 NAME="PATH1 : Testing with /usr/bin PATH"
 SETUP="export TERM=xterm ; PATH='/usr/bin'"
@@ -58,6 +66,10 @@ TESTS=
   sleep 0.5
   echo 'pwd'
 [103-END]
+
+*********************************************
+       ENV, SETENV, UNSETENV TEST
+*********************************************
 
 [201]
 NAME="Multiple setenv and unsetenv and env"
@@ -164,8 +176,12 @@ TESTS=
   echo 'env'
 [206-END]
 
-[907]
-NAME="builtin cd"
+*****************************
+       BUILTIN CD TEST
+*****************************
+
+[301]
+NAME="cd"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
@@ -173,7 +189,56 @@ TESTS=
   echo 'ls -l'
   echo 'cd /usr'
   echo 'ls -l'
-[907-END]
+[301-END]
+
+[302]
+NAME="cd and error messages"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'cd jjjjj'
+[302-END]
+
+[303]
+NAME="cd -"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'cd /usr'
+  echo 'ls -l'
+  echo 'cd -'
+  echo 'ls -l'
+[303-END]
+
+[304]
+NAME="cd - without OLDPWD"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'unsetenv OLDPWD'
+  echo 'ls -l'
+  echo 'cd -'
+  echo 'ls -l'
+[304-END]
+
+[305]
+NAME="cd home"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'cd'
+  echo 'ls -l'
+[305-END]
+
+[306]
+NAME="cd home without HOME"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'unsetenv HOME'
+  echo 'cd'
+  echo 'ls-l'
+[306-END]
 
 [908]
 NAME="many tab and space"
