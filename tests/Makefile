@@ -77,10 +77,14 @@ CC	=	gcc
 
 all: $(OBJECTS)
 	$(CC) -o $(NAME) $(OBJECTS) $(LDFLAGS)
-	$(MAKE) --no-print-directory -s -C functional_tests/ -s
+	$(MAKE) --no-print-directory -s -C functional_tests/
+	@echo -e "************  UNIT TEST LIB VERSION ************\n"
 	./$(NAME)
+	@echo -e "\n************  UNIT TEST 42SH VERSION ************\n"
+	sleep 2
 	$(MAKE) --no-print-directory -s -C functional_tests/ run_test
 	$(MAKE) --no-print-directory -s fclean
+	@echo -e "\n************  END TEST ************"
 
 clean:
 	$(MAKE) --no-print-directory -s -C functional_tests/ clean
