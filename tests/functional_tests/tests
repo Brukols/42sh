@@ -240,29 +240,61 @@ TESTS=
   echo 'ls-l'
 [306-END]
 
-[908]
+********************************************
+       SPACE AND TAB FORMATTING TEST
+********************************************
+
+[401]
 NAME="many tab and space"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo -e "\t\t    ls\t     \t-l    \t\t  \t -a /usr   \t\t"
-[908-END]
+[401-END]
 
-[909]
+*******************************
+       ERROR HANDLING TEST
+*******************************
+
+[501]
+NAME="Bin not compatible"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "./src/slt"
+[501-END]
+
+[502]
 NAME="Launch DivZero program with core dump"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo "./my_divzero"
-[909-END]
+[502-END]
 
-[910]
+[503]
+NAME="Launch DivZero program without core dump"
+SETUP="ulimit -c 0 ; export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "./my_divzero"
+[503-END]
+
+[504]
 NAME="Launch SegFault program without core dump"
 SETUP="ulimit -c 0 ; export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo "./my_segfault"
-[910-END]
+[504-END]
+
+[505]
+NAME="Launch SegFault program with core dump"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "./my_segfault"
+[505-END]
 
 [911]
 NAME="Testing simple pipe"

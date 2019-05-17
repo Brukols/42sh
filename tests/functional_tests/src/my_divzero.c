@@ -5,7 +5,12 @@
 ** my_divzero
 */
 
+#include <unistd.h>
+#include <signal.h>
+#include <sys/types.h>
+
 int main(void)
 {
-    return (3 / 0);
+    kill(getpid(), SIGFPE);
+    return (0);
 }

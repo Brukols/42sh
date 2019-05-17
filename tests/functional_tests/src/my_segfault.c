@@ -5,10 +5,12 @@
 ** my_segfault
 */
 
-#include <stdio.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/types.h>
 
 int main(void)
 {
-    printf("%s", 1234);
+    kill(getpid(), SIGSEGV);
     return (0);
 }

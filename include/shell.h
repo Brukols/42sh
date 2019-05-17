@@ -109,7 +109,7 @@ int pip_redirection(t_info *shell, t_command *command);
 int right_redirection(t_info *shell, t_command *command);
 int left_redirection(t_info *shell, t_command *command);
 /* CHILD */
-void test_segfault(t_info *shell);
+void test_segfault(t_info *shell, char *error);
 int wait_end_all_exec(t_info *shell);
 
 /* FREE FT */
