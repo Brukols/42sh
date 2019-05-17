@@ -8,7 +8,6 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#define NO_GLOBBINGS -1
 #include "my.h"
 #include <errno.h>
 #include <glob.h>
@@ -19,6 +18,7 @@
 #include <string.h>
 #include <fcntl.h>
 
+#define NO_GLOBBINGS -1
 #define EXIT_ERROR 84
 #define RETURN_FAILURE -1
 #define RETURN_SUCCESS 0

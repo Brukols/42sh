@@ -19,11 +19,12 @@ char **apply_globbings(char **tab_command)
 GLOB_DOOFFS | GLOB_APPEND | GLOB_NOCHECK), NULL, &globbuf);
     if ((tmp = malloc(sizeof(char *) * \
 (get_size_array(globbuf.gl_pathv) + 1))) == NULL)
-        return NULL;
+        return (NULL);
     for (i = 0; globbuf.gl_pathv[i]; i++)
         if ((tmp[i] = my_strdup(globbuf.gl_pathv[i])) == NULL)
             return NULL;
     tmp[i] = NULL;
     globfree(&globbuf);
-    return tmp;
+    free_array(tab_command);
+    return (tmp);
 }
