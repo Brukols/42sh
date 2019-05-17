@@ -44,19 +44,24 @@ SRC	=	src/main.c	\
 		src/fork/child/child_process.c	\
 		src/fork/child/get_right_path.c	\
 		src/fork/wait_child/wait_end_all_exec.c	\
+		src/history/init_history.c	\
 		src/free/delete_all.c	\
 		src/free/delete_builtin.c	\
 		src/free/delete_list.c	\
 		src/free/reset_comma.c	\
 		src/free/reset_command.c	\
 		src/free/reset_redirect.c	\
-		src/list/add_to_list.c	\
-		src/list/check_sep.c	\
-		src/list/command_to_list.c	\
-		src/list/create_command.c	\
 		src/list/create_list.c	\
-		src/list/get_separator.c	\
+		src/list/add_to_list.c	\
+		src/list/create_command.c	\
+		src/list/command_to_list/check_sep.c	\
+		src/list/command_to_list/command_to_list.c	\
+		src/list/command_to_list/get_separator.c	\
+		src/list/command_to_list_double/check_sep_double.c	\
+		src/list/command_to_list_double/command_to_list_double_sep.c	\
+		src/list/command_to_list_double/get_separator_double.c	\
 		src/sh/command/command_comma.c	\
+		src/sh/command/command_double_sep.c	\
 		src/sh/command/command_pip.c	\
 		src/sh/command/create_tab_command.c	\
 		src/sh/command/command_exec.c	\
@@ -85,7 +90,7 @@ $(NAME)	:	$(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
 
 tests_run:
-	$(MAKE) -C ./tests
+	@$(MAKE) --no-print-directory -s -C ./tests
 
 clean:
 	$(MAKE) -C ./lib/my clean
@@ -98,5 +103,8 @@ fclean:	clean
 	$(MAKE) -C ./tests/ fclean
 
 re:	fclean all
+
+debug : CFLAGS += -g
+debug : re
 
 .PHONY: all clean fclean re tests_run

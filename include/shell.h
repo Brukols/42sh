@@ -9,16 +9,19 @@
 #define SHELL_H
 
 #define NO_GLOBBINGS -1
-#define EXIT_ERROR 84
-#include <glob.h>
 #include "my.h"
 #include <errno.h>
+#include <glob.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdio.h>
 #include <limits.h>
 #include <string.h>
 #include <fcntl.h>
+
+#define EXIT_ERROR 84
+#define RETURN_FAILURE -1
+#define RETURN_SUCCESS 0
 
 typedef struct s_info
 {
@@ -29,11 +32,13 @@ typedef struct s_info
     int exit;
     int status;
     pid_t child_pid;
+    pid_t gr_pid;
     int fd[2];
     int fdd;
+    int fd_read;
     int stdin_o;
     int stdou_o;
-
+    int history;
 } t_info;
 
 typedef struct s_list
@@ -105,10 +110,10 @@ int right_redirection(t_info *shell, t_command *command);
 int left_redirection(t_info *shell, t_command *command);
 /* CHILD */
 void test_segfault(t_info *shell);
-void wait_end_all_exec(t_info *shell);
+int wait_end_all_exec(t_info *shell);
 
 /* FREE FT */
-void delete_all(t_info *shell);
+void *delete_all(t_info *shell);
 void delete_command(t_command *command);
 t_list *delete_list(t_list *list);
 t_builtin **delete_builtin(t_builtin **builtin);
@@ -116,11 +121,15 @@ void reset_comma(t_info *shell);
 void reset_command(t_info *shell);
 void reset_redirect(t_info *shell);
 
+/* HISTORY */
+int init_history(void);
+
+
 /* SH */
 int my_sh(t_info *shell);
-t_info *prepare_info(char **env);
+t_info *prepare_info(int argc, char **argv, char **env);
 void print_prompt(void);
-int shell(char **env);
+int shell(int argc, char **argv, char **env);
 /* COMMAND */
 int do_execve(t_info *shell, t_command *command);
 int command_exec(t_command *command, t_info *shell);
@@ -130,16 +139,23 @@ int command_pip(t_command *command, t_info *shell);
 t_list *create_tab_command(t_list *list);
 int is_skip_command(t_command *command);
 char **apply_globbings(char **tab_command);
+int command_double_sep(t_command *command, t_info *shell);
 /* SIGNAL */
 int prepare_signal(void);
 void sigint_handler(int sig);
 
 /* LIST */
 t_list *create_list(void);
-int check_sep(char c, char *sep);
 t_command *create_command(int len_word, char *str, int i);
+
+int check_sep(char c, char *sep);
 t_command *get_separator(t_command *command, char *str, char *sep, int i);
 t_list *add_to_list(t_list *list, t_command *command);
 t_list *command_to_list(char *str, char *sep);
+
+t_list *command_to_list_double_sep(char *str, char *sep);
+int check_sep_double(char *c, int pos, char *sep);
+t_command *get_separator_double(t_command *command, char *str,
+char *sep, int i);
 
 #endif

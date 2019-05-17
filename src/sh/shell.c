@@ -7,22 +7,21 @@
 
 #include "shell.h"
 
-int shell(char **env)
+int shell(int argc, char **argv, char **env)
 {
-    t_info *shell = prepare_info(env);
+    t_info *shell = prepare_info(argc, argv, env);
 
     if (shell == NULL) {
-        delete_all(shell);
         return (EXIT_ERROR);
     }
 
     prepare_signal();
     print_prompt();
 
-    if (my_sh(shell) == EXIT_FAILURE) {
+    if (my_sh(shell) == RETURN_FAILURE) {
         delete_all(shell);
         return (EXIT_ERROR);
     }
     delete_all(shell);
-    return (EXIT_SUCCESS);
+    return (RETURN_SUCCESS);
 }
