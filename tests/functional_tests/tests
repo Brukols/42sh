@@ -6,6 +6,8 @@ TESTS=
   echo ''
 [901-END]
 
+##TEST
+
 [902]
 NAME="Exec two command"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"

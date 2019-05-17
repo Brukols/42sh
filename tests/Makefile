@@ -75,20 +75,18 @@ LDFLAGS	=	-L./../lib/ --coverage -lmy -lcriterion
 
 CC	=	gcc
 
-all:	$(NAME)
-
-$(NAME): $(OBJECTS)
-	cp ../42sh functional_tests/basic_tests
-	$(MAKE) -C functional_tests/basic_tests
+all: $(OBJECTS)
 	$(CC) -o $(NAME) $(OBJECTS) $(LDFLAGS)
 	./$(NAME)
+	$(MAKE) -C functional_tests/
+	$(MAKE) fclean
 
 clean:
-	$(MAKE) -C functional_tests/basic_tests clean
+	$(MAKE) -C functional_tests/ clean
 	rm -rf $(OBJECTS)
 
 fclean:	clean
-	$(MAKE) -C functional_tests/basic_tests fclean
+	$(MAKE) -C functional_tests/ fclean
 	rm -rf $(NAME)
 
 re:	fclean	all

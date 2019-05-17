@@ -8,6 +8,8 @@
 CC	=	gcc
 
 all: my_divzero my_segfault
+	cp ../../42sh .
+	./tester.sh
 
 my_divzero:
 	gcc -o my_divzero src/my_divzero.c
