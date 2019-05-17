@@ -89,7 +89,7 @@ $(NAME)	:	$(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
 
 tests_run:
-	$(MAKE) -C ./tests
+	$(MAKE) -s --no-print-directory -C ./tests
 
 clean:
 	$(MAKE) -C ./lib/my clean

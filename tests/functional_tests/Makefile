@@ -7,15 +7,17 @@
 
 CC	=	gcc
 
-all: my_divzero my_segfault
+compile_src: my_divzero my_segfault
 	cp ../../42sh .
-	./tester.sh
 
 my_divzero:
-	gcc -o my_divzero src/my_divzero.c
+	gcc -w -o my_divzero src/my_divzero.c
 
 my_segfault:
 	gcc -o my_segfault src/my_segfault.c
+
+run_test:
+	./tester.sh
 
 clean:
 	$(RM) *.o
