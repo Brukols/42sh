@@ -477,3 +477,11 @@ TESTS=
   echo 'cat azer***p.*g'
   echo 'rm azertyuiop.log'
 [706-END]
+
+[707]
+NAME="Scripting"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo './src/tst.42sh'
+[707-END]
