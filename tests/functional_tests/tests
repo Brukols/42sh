@@ -249,7 +249,7 @@ NAME="many tab and space"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
-  echo -e "\t\t    ls\t     \t-l    \t\t  \t -a /usr   \t\t"
+  echo -e "  \t\t    ls\t     \t-l    \t\t  \t -a /usr   \t\t"
 [401-END]
 
 *******************************
@@ -308,15 +308,23 @@ TESTS=
        SEPARATOR TEST (SOON)
 *******************************
 
-[911]
-NAME="Testing simple pipe"
+[601]
+NAME="Simple comma separator"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "ls -l /etc ; ls -l /dev ; ls -l ; echo yes"
+[601-END]
+
+[602]
+NAME="Simple pipe"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo "ls -l /etc | grep sh"
-[911-END]
+[602-END]
 
-[912]
+[603]
 NAME="A pipe with a builtin ?"
 SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
 CLEAN="PATH=$OLDPATH"
@@ -325,4 +333,61 @@ TESTS=
   echo '/bin/ls | cd /usr'
   echo 'ls -l'
   echo 'exit 45|cat /etc/resolv.conf'
-[912-END]
+[603-END]
+
+[604]
+NAME="A pipe with big input"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls /dev | grep tty | sort -r | rev'
+[604-END]
+
+[605]
+NAME="Advanced pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'cat /etc/passwd | tr : # | tr -s abcdefghijklmnopqrstuvwxyz| cut -c 2 | grep -e a -e b -e\
+   c -e d -e e -e f -e g -e h -e i -e j -e k -e l -e m -e n -e o -e p -e q -e r -e s -e \
+  t -e u -e v -e w -e x -e y -e z |sort|uniq -c
+[605-END]
+
+[606]
+NAME="Simple right redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l /dev > toto'
+  echo 'cat toto'
+  echo 'rm toto'
+[606-END]
+
+[607]
+NAME="Simple left redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l /dev > toto'
+  echo 'grep tty < toto'
+  echo 'rm toto'
+[607-END]
+
+[608]
+NAME="Wrong simple left redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'grep tty < ls -l /dev'
+[608-END]
+
+[609]
+NAME="Double right redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l /dev >> toto'
+  echo 'ls -l /home >> toto'
+  echo 'cat toto'
+  echo 'rm toto'
+[609-END]
