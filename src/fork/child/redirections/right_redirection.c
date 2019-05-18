@@ -14,9 +14,12 @@ int right_redirection(t_info *shell, t_command *command)
         my_printe("%s\n", strerror(errno));
         return (RETURN_FAILURE);
     }
-    if ((fd = open(command->next->tab_command[0],
-        O_CREAT | O_RDWR, 0664)) == -1)
+    if (command->next == NULL || command->next->tab_command == NULL
+    || (fd = open(command->next->tab_command[0],
+    O_CREAT | O_RDWR, 0664)) == -1) {
+        my_printe("Missing name for redirect.\n");
         return (RETURN_FAILURE);
+    }
     if (dup2(fd, STDOUT_FILENO) == -1) {
         my_printe("%s\n", strerror(errno));
         return (RETURN_FAILURE);

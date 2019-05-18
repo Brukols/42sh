@@ -304,9 +304,9 @@ TESTS=
   echo "./src"
 [506-END]
 
-*******************************
-       SEPARATOR TEST (SOON)
-*******************************
+*****************************
+       SEPARATOR TEST
+*****************************
 
 [601]
 NAME="Simple comma separator"
@@ -364,6 +364,14 @@ TESTS=
 [606-END]
 
 [607]
+NAME="Wrong simple right redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l /dev >'
+[607-END]
+
+[608]
 NAME="Simple left redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -371,17 +379,17 @@ TESTS=
   echo 'ls -l /dev > toto'
   echo 'grep tty < toto'
   echo 'rm toto'
-[607-END]
+[608-END]
 
-[608]
+[609]
 NAME="Wrong simple left redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'grep tty < ls -l /dev'
-[608-END]
+[609-END]
 
-[609]
+[610]
 NAME="Double right redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -390,4 +398,82 @@ TESTS=
   echo 'ls -l /home >> toto'
   echo 'cat toto'
   echo 'rm toto'
-[609-END]
+[610-END]
+
+[611]
+NAME="Pipe and redirection in file"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l /dev | grep tty > data'
+  echo 'cat data'
+  echo 'rm data'
+[611-END]
+
+[612]
+NAME="Input of file and pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls /dev > data'
+  echo 'cat < data | grep tty'
+  echo 'rm data'
+[612-END]
+
+***************************
+       FEATURES TEST
+***************************
+
+[701]
+NAME="Testing &&"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls /dev && echo yes'
+[701-END]
+
+[702]
+NAME="Testing ||"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'lzz || echo yes'
+[702-END]
+
+[703]
+NAME="Testing || and &&"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls || echo no && echo yes'
+[703-END]
+
+[704]
+NAME="Testing globbing ???"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls > azertyuiop'
+  echo 'cat aze???uiop'
+  echo 'rm azertyuiop'
+[704-END]
+
+[705]
+NAME="Testing globbing ***"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls > azertyuiop.log'
+  echo 'cat *.log'
+  echo 'rm azertyuiop.log'
+[705-END]
+
+[706]
+NAME="Testing globbing ****"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls > azertyuiop.log'
+  echo 'cat azer***p.*g'
+  echo 'rm azertyuiop.log'
+[706-END]
