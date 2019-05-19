@@ -31,6 +31,7 @@ t_variable *add_variable(t_info *shell, char *name)
         var->prev = NULL;
         var->next = NULL;
     } else {
+        for (; var->next; var = var->next);
         var->next = malloc(sizeof(t_variable));
         if (!var->next)
             return (NULL);
@@ -62,7 +63,7 @@ char *get_value_set(char *str)
     return (value);
 }
 
-int complete_value(t_variable *var, t_command *cmd, int i)
+int complete_value(t_variable *var, t_command *cmd, t_info *shell, int i)
 {
     char *original_value = get_value_set(cmd->tab_command[i]);
 
@@ -72,6 +73,8 @@ int complete_value(t_variable *var, t_command *cmd, int i)
     free(original_value);
     if (!var->arg)
         return (EXIT_FAILURE);
+    for (; var->prev; var = var->prev);
+    shell->variable = var;
     return (EXIT_SUCCESS);
 }
 
@@ -88,5 +91,5 @@ int set_variable(t_info *shell, t_command *cmd, int i)
             return (EXIT_FAILURE);
     }
     free(name);
-    return (complete_value(var, cmd, i));
+    return (complete_value(var, cmd, shell, i));
 }

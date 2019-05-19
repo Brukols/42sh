@@ -28,7 +28,8 @@ char *delete_one_chara(char *str, int pos)
 
 int check_quote_matched(char *parse, int *n, char *str)
 {
-    for (; str[*n] && str[*n] != *parse; (*n)++);
+    for (; str[*n] && str[*n] != *parse; (*n)++)
+        my_putchar(str[*n]);
     if (!str[*n]) {
         my_printf("Unmatched '%c'.\n", *parse);
         return (UNMATCHED_QUOTE);
@@ -36,12 +37,12 @@ int check_quote_matched(char *parse, int *n, char *str)
     return (EXIT_SUCCESS);
 }
 
-int re_init_tab_command(t_command *cmd, int n, int i, char *str)
+int re_init_tab_command(t_command *cmd, int n, int i, char **str)
 {
-    cmd->tab_command[i] = delete_one_chara(str, n);
+    cmd->tab_command[i] = delete_one_chara(cmd->tab_command[i], n);
     if (!cmd->tab_command[i])
         return (EXIT_FAILURE);
-    str = cmd->tab_command[i];
+    (*str) = cmd->tab_command[i];
     return (EXIT_SUCCESS);
 }
 
@@ -53,7 +54,7 @@ int do_the_delete(t_command *cmd, int i, char *str, int n)
     for (n++; str[n]; n++) {
         if (parse == 0 && (str[n] == '"' || str[n] == '\'')) {
             parse = str[n];
-            verif = re_init_tab_command(cmd, n, i ,str);
+            verif = re_init_tab_command(cmd, n, i, &str);
         }
         if (verif == EXIT_FAILURE)
             return (EXIT_FAILURE);
@@ -61,7 +62,7 @@ int do_the_delete(t_command *cmd, int i, char *str, int n)
             continue;
         if (check_quote_matched(&parse, &n, str) == UNMATCHED_QUOTE)
             return (UNMATCHED_QUOTE);
-        if (re_init_tab_command(cmd, n, i, str) == EXIT_FAILURE)
+        if (re_init_tab_command(cmd, n, i, &str) == EXIT_FAILURE)
             return (EXIT_FAILURE);
         n--;
     }
