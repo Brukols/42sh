@@ -17,7 +17,7 @@ t_builtin **init_builtin(void)
     char *name[] = {"cd", "setenv", "unsetenv", "env", "set", "unset"};
     for (int i = 0; i < 6; i++) {
         builtin[i] = malloc(sizeof(t_builtin));
-        if (builtin[i] == NULL) 
+        if (builtin[i] == NULL)
             return (NULL);
         builtin[i]->name = my_strdup(name[i]);
         if (builtin[i]->name == NULL) {

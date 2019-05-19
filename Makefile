@@ -37,7 +37,7 @@ SRC	=	src/main.c	\
 		src/builtin/set/my_set/my_set.c	\
 		src/builtin/set/my_set/check_alphanumeric_name.c	\
 		src/builtin/set/my_set/delete_all_quotation_set.c	\
-		src/builtin/set/my_set/delete_quote_set.c	\
+		src/builtin/set/my_set/delete_quotation_set.c	\
 		src/builtin/set/my_set/set_variable.c	\
 		src/builtin/set/my_unset/my_unset.c	\
 		src/fork/create_process.c	\

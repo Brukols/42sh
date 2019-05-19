@@ -28,8 +28,7 @@ char *delete_one_chara(char *str, int pos)
 
 int check_quote_matched(char *parse, int *n, char *str)
 {
-    for (; str[*n] && str[*n] != *parse; (*n)++)
-        my_putchar(str[*n]);
+    for (; str[*n] && str[*n] != *parse; (*n)++);
     if (!str[*n]) {
         my_printf("Unmatched '%c'.\n", *parse);
         return (UNMATCHED_QUOTE);
@@ -48,7 +47,7 @@ int re_init_tab_command(t_command *cmd, int n, int i, char **str)
 
 int do_the_delete(t_command *cmd, int i, char *str, int n)
 {
-    int verif;
+    int verif = 0;
     char parse = 0;
 
     for (n++; str[n]; n++) {

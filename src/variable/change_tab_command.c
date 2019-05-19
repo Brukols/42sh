@@ -18,11 +18,11 @@ int delete_character(t_command *cmd, int i, int a)
     cmd->tab_command[i] = malloc(sizeof(char) * (my_strlen(tmp) + 1));
     if (!cmd->tab_command[i])
         return (EXIT_FAILURE);
-    for (; tmp[n]; n++, p++) {
-        if (p == a)
+    for (; tmp[n]; n++) {
+        if (n == a)
             continue;
         cmd->tab_command[i][p] = tmp[n];
-        n++;
+        p++;
     }
     cmd->tab_command[i][p] = '\0';
     free(tmp);
@@ -33,7 +33,7 @@ int delete_the_name(t_command *cmd, int i, int a)
 {
     if (delete_character(cmd, i, a) == EXIT_FAILURE)
         return (EXIT_FAILURE);
-    while (is_alphanumeric(cmd->tab_command[i][a])) {
+    while (cmd->tab_command[i][a] && is_alphanumeric(cmd->tab_command[i][a])) {
         if (delete_character(cmd, i, a) == EXIT_FAILURE)
             return (EXIT_FAILURE);
     }
