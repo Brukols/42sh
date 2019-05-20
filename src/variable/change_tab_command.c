@@ -15,6 +15,7 @@ int delete_character(t_command *cmd, int i, int a)
 
     if (!tmp)
         return (EXIT_FAILURE);
+    free(cmd->tab_command[i]);
     cmd->tab_command[i] = malloc(sizeof(char) * (my_strlen(tmp) + 1));
     if (!cmd->tab_command[i])
         return (EXIT_FAILURE);

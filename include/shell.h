@@ -132,6 +132,7 @@ t_builtin **delete_builtin(t_builtin **builtin);
 void reset_comma(t_info *shell);
 void reset_command(t_info *shell);
 void reset_redirect(t_info *shell);
+void free_variable(t_variable *);
 
 /* HISTORY */
 int init_history(void);

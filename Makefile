@@ -56,6 +56,7 @@ SRC	=	src/main.c	\
 		src/free/reset_comma.c	\
 		src/free/reset_command.c	\
 		src/free/reset_redirect.c	\
+		src/free/free_variable.c	\
 		src/list/add_to_list.c	\
 		src/list/check_sep.c	\
 		src/list/command_to_list.c	\

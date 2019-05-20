@@ -41,9 +41,12 @@ bool name_is_an_int(char *name)
 
 int variable_does_not_exist(char *name)
 {
-    if (name_is_an_int(name) == true)
+    if (name_is_an_int(name) == true) {
+        free(name);
         return (EXIT_SUCCESS);
+    }
     my_printf("%s: Undefined variable.\n", name);
+    free(name);
     return (EXIT_SUCCESS);
 }
 
@@ -62,5 +65,6 @@ int remplace_variable(t_command *cmd, t_info *shell, int i, int a)
         return (variable_does_not_exist(name));
     if (change_tab_command(cmd, value, i, a) == FAILURE)
         return (EXIT_FAILURE);
+    free(name);
     return (VARIABLE);
 }
