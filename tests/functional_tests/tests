@@ -495,4 +495,12 @@ TESTS=
   echo '$a $PWD'
   echo 'unset a'
   echo '$a $PWD'
+  echo 'set a=ls b=tree PATH=/bin'
+  echo '$a'
+  echo '$b'
+  echo '$PATH'
+  echo 'unset a b PATH'
+  echo '$a'
+  echo '$b'
+  echo '$PATH'
 [708-END]
