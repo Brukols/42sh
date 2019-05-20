@@ -35,6 +35,12 @@ SRC	=	src/main.c	\
 		src/builtin/my_cd/my_cd.c	\
 		src/builtin/my_cd/update_envcd.c	\
 		src/builtin/my_cd/verif_cd.c	\
+		src/builtin/set/my_set/my_set.c	\
+		src/builtin/set/my_set/check_alphanumeric_name.c	\
+		src/builtin/set/my_set/delete_all_quotation_set.c	\
+		src/builtin/set/my_set/delete_quotation_set.c	\
+		src/builtin/set/my_set/set_variable.c	\
+		src/builtin/set/my_unset/my_unset.c	\
 		src/fork/create_process.c	\
 		src/fork/child/redirections/child_redirection.c	\
 		src/fork/child/redirections/double_right_redirection.c	\
@@ -51,6 +57,7 @@ SRC	=	src/main.c	\
 		src/free/reset_comma.c	\
 		src/free/reset_command.c	\
 		src/free/reset_redirect.c	\
+		src/free/free_variable.c	\
 		src/list/create_list.c	\
 		src/list/add_to_list.c	\
 		src/list/create_command.c	\
@@ -74,6 +81,11 @@ SRC	=	src/main.c	\
 		src/sh/shell.c	\
 		src/signal/prepare_signal.c	\
 		src/signal/signal_handler.c	\
+		src/variable/local_and_env_variable.c	\
+		src/variable/change_tab_command.c	\
+		src/variable/get_value_name.c		\
+		src/variable/remplace_the_name.c	\
+		src/variable/remplace_variable.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -107,4 +119,4 @@ re:	fclean all
 debug : CFLAGS += -g
 debug : re
 
-.PHONY: all clean fclean re tests_run
+.PHONY: all clean fclean re tests_run debug

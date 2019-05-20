@@ -19,6 +19,7 @@ void *delete_all(t_info *shell)
         shell->builtin = delete_builtin(shell->builtin);
     if (shell->env)
         shell->env = free_array(shell->env);
+    free_variable(shell->variable);
     if (shell->command_line) {
         free(shell->command_line);
         shell->command_line = NULL;

@@ -17,6 +17,16 @@
 #include <limits.h>
 #include <string.h>
 #include <fcntl.h>
+#include <stdbool.h>
+#include "macros.h"
+
+typedef struct s_variable
+{
+    char *name;
+    char **arg;
+    struct s_variable *next;
+    struct s_variable *prev;
+} t_variable;
 
 #define NO_GLOBBINGS -1
 #define EXIT_ERROR 84
@@ -26,6 +36,7 @@
 typedef struct s_info
 {
     struct s_builtin **builtin;
+    struct s_variable *variable;
     char **env;
     char *command_line;
     char *path;
@@ -94,6 +105,14 @@ int double_right_builtin_redirection(t_info *shell, t_command *command);
 int pip_builtin_redirection(t_info *shell, t_command *command);
 int right_builtin_redirection(t_info *shell, t_command *command);
 int left_builtin_redirection(t_info *shell, t_command *command);
+/* MY_SET */
+int my_set(t_info *, t_command *);
+int delete_quotation_set(t_command *, int);
+int check_alphanumeric_name(t_command *);
+int delete_all_quotation_set(t_command *);
+int set_variable(t_info *, t_command *, int);
+/* MY_UNSET */
+int my_unset(t_info *, t_command *);
 
 /* FORK */
 pid_t create_process(void);
@@ -120,6 +139,7 @@ t_builtin **delete_builtin(t_builtin **builtin);
 void reset_comma(t_info *shell);
 void reset_command(t_info *shell);
 void reset_redirect(t_info *shell);
+void free_variable(t_variable *);
 
 /* HISTORY */
 int init_history(void);
@@ -157,5 +177,13 @@ t_list *command_to_list_double_sep(char *str, char *sep);
 int check_sep_double(char *c, int pos, char *sep);
 t_command *get_separator_double(t_command *command, char *str,
 char *sep, int i);
+/* VARIABLE */
+int local_and_env_variable(t_command *, t_info *);
+int remplace_variable(t_command *, t_info *, int, int);
+int remplace_the_name(t_command *, char **, int);
+int parse_command(t_command *, t_info *);
+char **get_value_name(t_info *, char *);
+int change_tab_command(t_command *, char **, int, int);
+bool is_alphanumeric(char);
 
 #endif
