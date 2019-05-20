@@ -485,3 +485,14 @@ CLEAN=""
 TESTS=
   echo './src/tst.42sh'
 [707-END]
+
+[708]
+NAME="Testing local and env variables"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'set a=ls'
+  echo '$a $PWD'
+  echo 'unset a'
+  echo '$a $PWD'
+[708-END]
