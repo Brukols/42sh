@@ -9,3 +9,5 @@ ls `cat toto | grep c`
 ls *.c
 
 (ls `cat toto | grep c`) && echo "oh"
+
+Execute ce qu'il y a entre les magic quote et mets en arguments
