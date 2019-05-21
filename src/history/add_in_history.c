@@ -22,7 +22,8 @@ char *find_nb_command_line(int fd)
 
 char *find_time_command_line(void)
 {
-    struct tm *tm = localtime(time(NULL));
+    time_t timep= time(NULL);
+    struct tm *tm = localtime(&timep);
     char *hour = my_itoa(tm->tm_hour);
     char *min = my_itoa(tm->tm_min);
     int len = 0;
@@ -34,9 +35,11 @@ char *find_time_command_line(void)
     len = my_strlen(hour) + my_strlen(min) + 1;
     if ((buffer = malloc(sizeof(char) * (len + 1))) == NULL)
         return (NULL);
+    buffer[0] = '\0';
     buffer = strcat(buffer, hour);
     buffer = strcat(buffer, double_dot);
     buffer = strcat(buffer, min);
+    my_printf("%s", buffer);
     return (buffer);
 }
 
@@ -48,9 +51,9 @@ int add_in_history(char *command_line, int fd)
     if (nb_command == NULL)
         return (-1);
     write(fd, nb_command, strlen(nb_command));
-    write(fd, ":", 1);
+    write(fd, "-", 1);
     write(fd, time, strlen(time));
-    write(fd, ":", 1);
+    write(fd, "-", 1);
     if (lseek(fd, 0, SEEK_END) == -1)
         return (-1);
     write(fd, command_line, strlen(command_line));
