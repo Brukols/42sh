@@ -39,7 +39,6 @@ char *find_time_command_line(void)
     buffer = strcat(buffer, hour);
     buffer = strcat(buffer, double_dot);
     buffer = strcat(buffer, min);
-    my_printf("%s", buffer);
     return (buffer);
 }
 
@@ -54,8 +53,6 @@ int add_in_history(char *command_line, int fd)
     write(fd, "-", 1);
     write(fd, time, strlen(time));
     write(fd, "-", 1);
-    if (lseek(fd, 0, SEEK_END) == -1)
-        return (-1);
     write(fd, command_line, strlen(command_line));
     write(fd, "\n"  , 1);
     return (0);

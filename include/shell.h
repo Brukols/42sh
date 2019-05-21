@@ -144,6 +144,7 @@ void free_variable(t_variable *);
 
 /* HISTORY */
 int add_in_history(char *command_line, int fd);
+int history(t_info *shell, t_command *command);
 int init_history(void);
 
 /* SH */
