@@ -11,14 +11,14 @@ int do_execve(t_info *shell, t_command *command)
 {
     if ((shell->child_pid = create_process()) == -1) {
         perror("fork :");
-        return (EXIT_FAILURE);
+        return (RETURN_FAILURE);
     } else if (shell->child_pid == 0) {
-        if (child_redirection(shell, command) == EXIT_FAILURE)
-            return (EXIT_FAILURE);
+        if (child_redirection(shell, command) == RETURN_FAILURE)
+            return (RETURN_FAILURE);
         child_process(shell, command);
     } else {
         close(shell->fd[1]);
         shell->fdd = shell->fd[0];
     }
-    return (EXIT_SUCCESS);
+    return (RETURN_SUCCESS);
 }

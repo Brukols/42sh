@@ -75,16 +75,23 @@ LDFLAGS	=	-L./../lib/ --coverage -lmy -lcriterion
 
 CC	=	gcc
 
-all:	$(NAME)
-
-$(NAME): $(OBJECTS)
+all: $(OBJECTS)
 	$(CC) -o $(NAME) $(OBJECTS) $(LDFLAGS)
+	$(MAKE) --no-print-directory -s -C functional_tests/
+	@echo -e "************  UNIT TEST LIB VERSION ************\n"
 	./$(NAME)
+	@echo -e "\n************  UNIT TEST 42SH VERSION ************\n"
+	sleep 2
+	$(MAKE) --no-print-directory -s -C functional_tests/ run_test
+	$(MAKE) --no-print-directory -s fclean
+	@echo -e "\n************  END TEST ************"
 
 clean:
+	$(MAKE) --no-print-directory -s -C functional_tests/ clean
 	rm -rf $(OBJECTS)
 
 fclean:	clean
+	$(MAKE) --no-print-directory -s -C functional_tests/ fclean
 	rm -rf $(NAME)
 
 re:	fclean	all

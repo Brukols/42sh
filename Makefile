@@ -26,6 +26,7 @@ SRC	=	src/main.c	\
 		src/builtin/env/my_unsetenv/exec_unsetenv.c	\
 		src/builtin/env/my_unsetenv/my_unsetenv.c	\
 		src/builtin/env/is_in_env.c	\
+		src/sh/command/globbings.c	\
 		src/builtin/env/repair_env.c	\
 		src/builtin/env/search_env.c	\
 		src/builtin/my_cd/change_dir.c	\
@@ -34,6 +35,12 @@ SRC	=	src/main.c	\
 		src/builtin/my_cd/my_cd.c	\
 		src/builtin/my_cd/update_envcd.c	\
 		src/builtin/my_cd/verif_cd.c	\
+		src/builtin/set/my_set/my_set.c	\
+		src/builtin/set/my_set/check_alphanumeric_name.c	\
+		src/builtin/set/my_set/delete_all_quotation_set.c	\
+		src/builtin/set/my_set/delete_quotation_set.c	\
+		src/builtin/set/my_set/set_variable.c	\
+		src/builtin/set/my_unset/my_unset.c	\
 		src/fork/create_process.c	\
 		src/fork/child/redirections/child_redirection.c	\
 		src/fork/child/redirections/double_right_redirection.c	\
@@ -51,13 +58,18 @@ SRC	=	src/main.c	\
 		src/free/reset_comma.c	\
 		src/free/reset_command.c	\
 		src/free/reset_redirect.c	\
-		src/list/add_to_list.c	\
-		src/list/check_sep.c	\
-		src/list/command_to_list.c	\
-		src/list/create_command.c	\
+		src/free/free_variable.c	\
 		src/list/create_list.c	\
-		src/list/get_separator.c	\
+		src/list/add_to_list.c	\
+		src/list/create_command.c	\
+		src/list/command_to_list/check_sep.c	\
+		src/list/command_to_list/command_to_list.c	\
+		src/list/command_to_list/get_separator.c	\
+		src/list/command_to_list_double/check_sep_double.c	\
+		src/list/command_to_list_double/command_to_list_double_sep.c	\
+		src/list/command_to_list_double/get_separator_double.c	\
 		src/sh/command/command_comma.c	\
+		src/sh/command/command_double_sep.c	\
 		src/sh/command/command_pip.c	\
 		src/sh/command/create_tab_command.c	\
 		src/sh/command/command_exec.c	\
@@ -70,6 +82,11 @@ SRC	=	src/main.c	\
 		src/sh/shell.c	\
 		src/signal/prepare_signal.c	\
 		src/signal/signal_handler.c	\
+		src/variable/local_and_env_variable.c	\
+		src/variable/change_tab_command.c	\
+		src/variable/get_value_name.c		\
+		src/variable/remplace_the_name.c	\
+		src/variable/remplace_variable.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -86,7 +103,7 @@ $(NAME)	:	$(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
 
 tests_run:
-	$(MAKE) -C ./tests
+	@$(MAKE) --no-print-directory -s -C ./tests
 
 clean:
 	$(MAKE) -C ./lib/my clean
@@ -103,4 +120,4 @@ re:	fclean all
 debug : CFLAGS += -g
 debug : re
 
-.PHONY: all clean fclean re tests_run
+.PHONY: all clean fclean re tests_run debug

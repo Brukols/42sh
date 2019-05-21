@@ -7,23 +7,27 @@
 
 #include "shell.h"
 
-void test_segfault(t_info *shell)
+void test_segfault(t_info *shell, char *error)
 {
-    if (WCOREDUMP(shell->status)) {
-        my_printe("Segmentation fault (core dumped)\n");
-    } else {
-        my_printe("Segmentation fault\n");
-    }
+    if (WCOREDUMP(shell->status))
+        my_printe("%s (core dumped)\n", error);
+    else
+        my_printe("%s\n", error);
 }
 
-void wait_end_all_exec(t_info *shell)
+int wait_end_all_exec(t_info *shell)
 {
-    waitpid(shell->child_pid, &shell->status, WUNTRACED | WCONTINUED);
-    if (WIFSIGNALED(shell->status)) {
-        if (WTERMSIG(shell->status) == SIGSEGV) {
-            test_segfault(shell);
+    int exit_status = 0;
+    while (wait(&shell->status) != -1) {
+        if (WIFSIGNALED(shell->status)) {
+            if (WTERMSIG(shell->status) == SIGSEGV)
+                test_segfault(shell, "Segmentation fault");
+            if (WTERMSIG(shell->status) == SIGFPE)
+                test_segfault(shell, "Floating exception");
         }
-        if (WTERMSIG(shell->status) == 8)
-            my_printe("Floating exception\n");
+        if (WIFEXITED(shell->status))
+            exit_status += WEXITSTATUS(shell->status);
+        shell->status = 0;
     }
+    return (exit_status);
 }
