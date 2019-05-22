@@ -9,7 +9,8 @@
 
 void *delete_all(t_info *shell)
 {
-    if (shell->fd_read != 0) close(shell->fd_read);
+    if (shell->fd_read != 0)
+        close(shell->fd_read);
     if (shell->builtin)
         shell->builtin = delete_builtin(shell->builtin);
     if (shell->env)

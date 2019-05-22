@@ -43,6 +43,7 @@ typedef struct s_info
     char *command_line;
     char *path;
     int exit;
+    FILE *_42rc;
     int status;
     pid_t child_pid;
     pid_t gr_pid;
@@ -150,7 +151,7 @@ int open_file_history(void);
 /* SH */
 int my_sh(t_info *shell);
 t_info *prepare_info(int argc, char **argv, char **env);
-void print_prompt(void);
+void print_prompt(int fd);
 int shell(int argc, char **argv, char **env);
 /* COMMAND */
 int do_execve(t_info *shell, t_command *command);

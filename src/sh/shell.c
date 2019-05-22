@@ -15,11 +15,7 @@ int shell(int argc, char **argv, char **env)
         return (EXIT_ERROR);
     }
     prepare_signal();
-    if (create_42rc(shell) == RETURN_FAILURE) {
-        delete_all(shell);
-        return (EXIT_ERROR);
-    }
-    print_prompt();
+    print_prompt(shell->fd_read);
 
     if (my_sh(shell) == RETURN_FAILURE) {
         delete_all(shell);

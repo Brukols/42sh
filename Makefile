@@ -11,6 +11,7 @@ SRC	=	src/main.c	\
 		src/builtin/init_builtin.c	\
 		src/builtin/is_builtin.c	\
 		src/builtin/do_builtin.c	\
+		src/sh/42rc.c	\
 		src/builtin/builtin_redirections/builtin_redirection.c	\
 		src/builtin/builtin_redirections/double_right_builtin_redirection.c	\
 		src/builtin/builtin_redirections/pip_builtin_redirection.c	\
