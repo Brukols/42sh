@@ -52,7 +52,7 @@ SRC	=	src/main.c	\
 		src/fork/wait_child/wait_end_all_exec.c	\
 		src/history/add_in_history.c	\
 		src/history/history.c	\
-		src/history/init_history.c	\
+		src/history/open_file_history.c	\
 		src/free/delete_all.c	\
 		src/free/delete_builtin.c	\
 		src/free/delete_list.c	\

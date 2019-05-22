@@ -34,11 +34,8 @@ t_info *prepare_info(int argc, char **argv, char **env)
     my_memset(shell, 0, sizeof(t_info));
     if ((shell->builtin = init_builtin()) == NULL)
         return (NULL);
-    shell->history = -1;
     shell->env = my_array_cpy(env);
     if (shell->env == NULL)
-        return (delete_all(shell));
-    if ((shell->history = init_history()) == -1)
         return (delete_all(shell));
     shell->fd_read = is_scripting(argc, argv);
     shell->stdin_o = dup(STDIN_FILENO);

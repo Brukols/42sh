@@ -50,7 +50,6 @@ typedef struct s_info
     int fd_read;
     int stdin_o;
     int stdou_o;
-    int history;
 } t_info;
 
 typedef struct s_list
@@ -143,9 +142,9 @@ void reset_redirect(t_info *shell);
 void free_variable(t_variable *);
 
 /* HISTORY */
-int add_in_history(char *command_line, int fd);
+int add_in_history(char *command_line);
 int history(t_info *shell, t_command *command);
-int init_history(void);
+int open_file_history(void);
 
 /* SH */
 int my_sh(t_info *shell);

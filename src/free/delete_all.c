@@ -9,10 +9,6 @@
 
 void *delete_all(t_info *shell)
 {
-    if (shell->history >= 0) {
-        close(shell->history);
-        shell->history = -1;
-    }
     if (shell->fd_read != 0) close(shell->fd_read);
     if (shell->builtin)
         shell->builtin = delete_builtin(shell->builtin);
