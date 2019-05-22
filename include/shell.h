@@ -17,6 +17,7 @@
 #include <limits.h>
 #include <string.h>
 #include <fcntl.h>
+#include <time.h>
 #include <stdbool.h>
 #include "macros.h"
 
@@ -143,8 +144,9 @@ void reset_redirect(t_info *shell);
 void free_variable(t_variable *);
 
 /* HISTORY */
+int add_in_history(char *command_line, int fd);
+int history(t_info *shell, t_command *command);
 int init_history(void);
-
 
 /* SH */
 int my_sh(t_info *shell);

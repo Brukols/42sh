@@ -9,7 +9,8 @@
 
 int init_history(void)
 {
-    int fd = open(".history_42sh", O_RDWR | O_CREAT);
+    int fd = open(".history_42sh", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR |
+    S_IRGRP | S_IWGRP | S_IWOTH | S_IROTH);
 
     return (fd);
 }
