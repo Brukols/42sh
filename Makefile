@@ -53,6 +53,7 @@ SRC	=	src/main.c	\
 		src/history/add_in_history.c	\
 		src/history/history.c	\
 		src/history/open_file_history.c	\
+		src/history/recup_path_history.c	\
 		src/free/delete_all.c	\
 		src/free/delete_builtin.c	\
 		src/free/delete_list.c	\

@@ -7,25 +7,32 @@
 
 #include "shell.h"
 
-char *find_nb_command_line(int fd)
+char *find_nb_command_line(void)
 {
     int nb = 1;
     char *buffer = NULL;
-    FILE *stream = fopen(".history_42sh", "r");
-    size_t len;
+    FILE *stream;
+    size_t len = 0;
+    char *path = recup_path_history();
+    char *nb_final;
 
-    if (stream == NULL)
+    if (path == NULL)
+        return NULL;
+    if ((stream = fopen(path, "r")) == NULL)
         return NULL;
     while (getline(&buffer, &len, stream) != -1)
         nb++;
-    buffer = my_itoa(nb);
+    free(buffer);
+    if ((nb_final = my_itoa(nb)) == NULL)
+        return (NULL);
+    free(path);
     fclose(stream);
-    return (buffer);
+    return (nb_final);
 }
 
 char *find_time_command_line(void)
 {
-    time_t timep= time(NULL);
+    time_t timep = time(NULL);
     struct tm *tm = localtime(&timep);
     char *hour = my_itoa(tm->tm_hour);
     char *min = my_itoa(tm->tm_min);
@@ -42,6 +49,8 @@ char *find_time_command_line(void)
     buffer = strcat(buffer, hour);
     buffer = strcat(buffer, double_dot);
     buffer = strcat(buffer, min);
+    free(hour);
+    free(min);
     return (buffer);
 }
 
@@ -53,17 +62,11 @@ int add_in_history(char *command_line)
 
     if (fd == -1)
         return (-1);
-    if ((nb_command = find_nb_command_line(fd)) == NULL) {
+    if ((nb_command = find_nb_command_line()) == NULL) {
         close(fd);
         return (-1);
     }
-    lseek(fd, 0, SEEK_END);
-    write(fd, nb_command, strlen(nb_command));
-    write(fd, "-", 1);
-    write(fd, time, strlen(time));
-    write(fd, "-", 1);
-    write(fd, command_line, strlen(command_line));
-    write(fd, "\n"  , 1);
+    dprintf(fd, "%s-%s-%s\n", nb_command, time, command_line);
     free(nb_command);
     free(time);
     close(fd);

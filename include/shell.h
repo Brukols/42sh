@@ -146,6 +146,7 @@ void free_variable(t_variable *);
 int add_in_history(char *command_line);
 int history(t_info *shell, t_command *command);
 int open_file_history(void);
+char *recup_path_history(void);
 
 /* SH */
 int my_sh(t_info *shell);
