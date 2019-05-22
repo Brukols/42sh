@@ -261,13 +261,44 @@ TESTS=
 [401-END]
 
 [402]
+NAME="Only space"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "                                                    "
+[402-END]
+
+[403]
+NAME="Only tabulation"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "\\t\\t\\t\\t"
+[403-END]
+
+[404]
+NAME="Only tabulation and spaces"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "   \\t\\t            \\t\\t"
+[404-END]
+
+[405]
 NAME="many tab and space"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo -e "  \t\t    ls\t     \t-l    \t\t  \t -a      /t  /usr   \t\t"
-[402-END]
+[405-END]
 
+[406]
+NAME="Tabulation and spaces and command"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "   \\t\\t       ls -l     \\t\\t"
+[406-END]
 
 *******************************
        ERROR HANDLING TEST
