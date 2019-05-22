@@ -20,6 +20,7 @@ int command_pip(t_command *command, t_info *shell)
 
     for (t_command *actual = list->start; actual; actual = actual->next) {
         reset_redirect(shell);
+        print_array(actual->tab_command);
         if (parse_command(actual, shell) == RETURN_FAILURE) {
             delete_list(list);
             return (RETURN_FAILURE);

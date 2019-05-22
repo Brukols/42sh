@@ -191,5 +191,6 @@ bool is_alphanumeric(char);
 
 char **command_in_array(char *str, char *sep);
 char *delete_one_chara(char *str, int pos);
+bool no_inhibitor(char *str, int i);
 
 #endif

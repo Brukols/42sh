@@ -594,7 +594,7 @@ TESTS=
 [712-END]
 
 [713]
-NAME="Inhibitor"
+NAME="Simple inhibitor"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
@@ -604,3 +604,32 @@ TESTS=
   echo 'set a=lol\ lol'
   echo '$a'
 [713-END]
+
+[714]
+NAME="Hard inhibitor"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls \; ls'
+  echo '\ls'
+  echo 'ls \\'
+[714-END]
+
+[715]
+NAME="Inhibitor with redirection and pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls \| grep c'
+  echo 'ls \> lol'
+  echo 'cat lol'
+  echo 'rm -rf lol'
+[715-END]
+
+[716]
+NAME="Special inhibitor"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls \'
+[716-END]
