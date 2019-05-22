@@ -50,7 +50,6 @@ SRC	=	src/main.c	\
 		src/fork/child/child_process.c	\
 		src/fork/child/get_right_path.c	\
 		src/fork/wait_child/wait_end_all_exec.c	\
-		src/history/init_history.c	\
 		src/free/delete_all.c	\
 		src/free/delete_builtin.c	\
 		src/free/delete_list.c	\
