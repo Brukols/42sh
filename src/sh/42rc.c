@@ -9,7 +9,6 @@
 
 int create_42rc(t_info *shell)
 {
-    return 0;
     int fd = 0;
     FILE *file = 0;
 

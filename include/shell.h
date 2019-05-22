@@ -42,6 +42,7 @@ typedef struct s_info
     char *command_line;
     char *path;
     int exit;
+    FILE *_42rc;
     int status;
     pid_t child_pid;
     pid_t gr_pid;
@@ -141,10 +142,6 @@ void reset_command(t_info *shell);
 void reset_redirect(t_info *shell);
 void free_variable(t_variable *);
 
-/* HISTORY */
-int add_in_history(char *command_line, int fd);
-int history(t_info *shell, t_command *command);
-int init_history(void);
 /* SH */
 int my_sh(t_info *shell);
 t_info *prepare_info(int argc, char **argv, char **env);
