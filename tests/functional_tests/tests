@@ -506,22 +506,30 @@ TESTS=
 [703-END]
 
 [704]
+NAME="Testing Multiple ||"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls || ls tutu || echo fini aussi'
+[704-END]
+
+[705]
 NAME="Testing || and &&"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
-  echo 'ls || echo no && echo yes'
-[704-END]
+  echo 'ls || echo no || echo lol && echo yes'
+[705-END]
 
-[705]
+[706]
 NAME="Testing && and || commands"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
-  echo 'unknown && echo "ok" || echo "nop"'
-[705-END]
+  echo 'unknown && echo ok || echo nop'
+[706-END]
 
-[706]
+[707]
 NAME="Testing globbing ???"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -529,9 +537,9 @@ TESTS=
   echo 'ls > azertyuiop'
   echo 'cat aze???uiop'
   echo 'rm azertyuiop'
-[706-END]
+[707-END]
 
-[707]
+[708]
 NAME="Testing globbing ***"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -539,9 +547,9 @@ TESTS=
   echo 'ls > azertyuiop.log'
   echo 'cat *.log'
   echo 'rm azertyuiop.log'
-[707-END]
+[708-END]
 
-[708]
+[709]
 NAME="Testing globbing ****"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -549,17 +557,17 @@ TESTS=
   echo 'ls > azertyuiop.log'
   echo 'cat azer***p.*g'
   echo 'rm azertyuiop.log'
-[708-END]
+[709-END]
 
-[709]
+[710]
 NAME="Scripting"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo './src/tst.42sh'
-[709-END]
+[710-END]
 
-[710]
+[711]
 NAME="Testing local and env variables"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -576,9 +584,9 @@ TESTS=
   echo '$a'
   echo '$b'
   echo '$PATH'
-[710-END]
+[711-END]
 
-[711]
+[712]
 NAME="Inhibitor"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -588,4 +596,4 @@ TESTS=
   echo 'rm -rf to\ to'
   echo 'set a=lol\ lol'
   echo '$a'
-[711-END]
+[712-END]
