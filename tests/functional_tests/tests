@@ -67,6 +67,14 @@ TESTS=
   echo 'pwd'
 [103-END]
 
+[104]
+NAME="PATH4 : run commands"
+SETUP="export TERM=xterm ; PATH='/'"
+CLEAN=""
+TESTS=
+  echo 'bin/ls'
+[104-END]
+
 *********************************************
        ENV, SETENV, UNSETENV TEST
 *********************************************
