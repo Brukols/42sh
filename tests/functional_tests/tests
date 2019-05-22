@@ -68,7 +68,7 @@ TESTS=
 [103-END]
 
 [104]
-NAME="PATH4 : run commands"
+NAME="PATH4 : run path commands"
 SETUP="export TERM=xterm ; PATH='/'"
 CLEAN=""
 TESTS=
@@ -253,12 +253,21 @@ TESTS=
 ********************************************
 
 [401]
+NAME="space 1"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo -e "ls        -a                 -l             /usr"
+[401-END]
+
+[402]
 NAME="many tab and space"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
-  echo -e "  \t\t    ls\t     \t-l    \t\t  \t -a /usr   \t\t"
-[401-END]
+  echo -e "  \t\t    ls\t     \t-l    \t\t  \t -a      /t  /usr   \t\t"
+[402-END]
+
 
 *******************************
        ERROR HANDLING TEST
