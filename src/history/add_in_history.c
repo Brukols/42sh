@@ -11,12 +11,13 @@ char *find_nb_command_line(int fd)
 {
     int nb = 0;
     char *buffer = NULL;
+    FILE *stream = fdopen(fd, "w");
+    size_t len;
 
-    if (lseek(fd, 0, SEEK_SET) == -1)
-        return (NULL);
-    while (get_next_line(fd) != NULL)
+    while (getline(&buffer, &len, stream) != -1)
         nb++;
     buffer = my_itoa(nb);
+    fclose(stream);
     return (buffer);
 }
 
@@ -42,12 +43,15 @@ char *find_time_command_line(void)
     return (buffer);
 }
 
-int add_in_history(char *command_line, int fd)
+int add_in_history(char *command_line)
 {
-    char *nb_command = find_nb_command_line(fd);
+    int fd = open_file_history();
+    char *nb_command;
     char *time = find_time_command_line();
 
-    if (nb_command == NULL)
+    if (fd == -1)
+        return (-1);
+    if ((nb_command = find_nb_command_line(fd)) == NULL)
         return (-1);
     write(fd, nb_command, strlen(nb_command));
     write(fd, "-", 1);
@@ -55,5 +59,6 @@ int add_in_history(char *command_line, int fd)
     write(fd, "-", 1);
     write(fd, command_line, strlen(command_line));
     write(fd, "\n"  , 1);
+    close(fd);
     return (0);
 }
