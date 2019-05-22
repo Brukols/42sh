@@ -38,6 +38,7 @@ typedef struct s_info
     struct s_builtin **builtin;
     struct s_variable *variable;
     char **env;
+    FILE *_42rc;
     char *command_line;
     char *path;
     int exit;
