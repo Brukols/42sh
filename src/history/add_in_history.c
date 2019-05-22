@@ -14,6 +14,8 @@ char *find_nb_command_line(int fd)
     FILE *stream = fdopen(fd, "w");
     size_t len;
 
+    if (stream == NULL)
+        return NULL;
     while (getline(&buffer, &len, stream) != -1)
         nb++;
     buffer = my_itoa(nb);
@@ -54,11 +56,13 @@ int add_in_history(char *command_line)
     if ((nb_command = find_nb_command_line(fd)) == NULL)
         return (-1);
     write(fd, nb_command, strlen(nb_command));
+    my_printf("debug#1\n");
     write(fd, "-", 1);
     write(fd, time, strlen(time));
     write(fd, "-", 1);
     write(fd, command_line, strlen(command_line));
     write(fd, "\n"  , 1);
+    my_printf("debug#2\n");
     close(fd);
     return (0);
 }

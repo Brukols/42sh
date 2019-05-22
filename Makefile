@@ -11,12 +11,10 @@ SRC	=	src/main.c	\
 		src/builtin/init_builtin.c	\
 		src/builtin/is_builtin.c	\
 		src/builtin/do_builtin.c	\
-		src/sh/42rc.c	\
 		src/builtin/builtin_redirections/builtin_redirection.c	\
 		src/builtin/builtin_redirections/double_right_builtin_redirection.c	\
 		src/builtin/builtin_redirections/pip_builtin_redirection.c	\
 		src/builtin/builtin_redirections/right_builtin_redirection.c	\
-		src/sh/42rc.c	\
 		src/builtin/builtin_redirections/left_builtin_redirection.c	\
 		src/builtin/env/my_env/my_env.c	\
 		src/builtin/env/my_setenv/add_venv.c	\
@@ -79,6 +77,7 @@ SRC	=	src/main.c	\
 		src/sh/command/do_execve.c	\
 		src/sh/command/is_skip_command.c	\
 		src/sh/command/parse_command.c	\
+		src/sh/42rc.c	\
 		src/sh/my_sh.c	\
 		src/sh/prepare_info.c	\
 		src/sh/print_prompt.c	\

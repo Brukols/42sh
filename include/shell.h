@@ -43,7 +43,6 @@ typedef struct s_info
     char *command_line;
     char *path;
     int exit;
-    FILE *_42rc;
     int status;
     pid_t child_pid;
     pid_t gr_pid;
