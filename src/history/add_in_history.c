@@ -9,9 +9,9 @@
 
 char *find_nb_command_line(int fd)
 {
-    int nb = 0;
+    int nb = 1;
     char *buffer = NULL;
-    FILE *stream = fdopen(fd, "w");
+    FILE *stream = fopen(".history_42sh", "r");
     size_t len;
 
     if (stream == NULL)
@@ -53,16 +53,19 @@ int add_in_history(char *command_line)
 
     if (fd == -1)
         return (-1);
-    if ((nb_command = find_nb_command_line(fd)) == NULL)
+    if ((nb_command = find_nb_command_line(fd)) == NULL) {
+        close(fd);
         return (-1);
+    }
+    lseek(fd, 0, SEEK_END);
     write(fd, nb_command, strlen(nb_command));
-    my_printf("debug#1\n");
     write(fd, "-", 1);
     write(fd, time, strlen(time));
     write(fd, "-", 1);
     write(fd, command_line, strlen(command_line));
     write(fd, "\n"  , 1);
-    my_printf("debug#2\n");
+    free(nb_command);
+    free(time);
     close(fd);
     return (0);
 }
