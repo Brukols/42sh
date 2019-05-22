@@ -17,6 +17,7 @@
 #include <limits.h>
 #include <string.h>
 #include <fcntl.h>
+#include <time.h>
 #include <stdbool.h>
 #include "macros.h"
 
@@ -41,6 +42,7 @@ typedef struct s_info
     char *command_line;
     char *path;
     int exit;
+    FILE *_42rc;
     int status;
     pid_t child_pid;
     pid_t gr_pid;
@@ -49,7 +51,6 @@ typedef struct s_info
     int fd_read;
     int stdin_o;
     int stdou_o;
-    int history;
 } t_info;
 
 typedef struct s_list
@@ -140,10 +141,6 @@ void reset_comma(t_info *shell);
 void reset_command(t_info *shell);
 void reset_redirect(t_info *shell);
 void free_variable(t_variable *);
-
-/* HISTORY */
-int init_history(void);
-
 
 /* SH */
 int my_sh(t_info *shell);
