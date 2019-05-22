@@ -11,13 +11,17 @@ t_command *eval_double_sep(t_command *actual, int ret)
 {
     if (!actual->next)
         return (NULL);
-    if (ret == 0 && strcmp(actual->separator, "&&") == 0) {
-        while (actual && ret == 0 && strcmp(actual->separator, "&&") == 0)
+    if (ret == 0) {
+        if (strcmp(actual->separator, "&&") == 0)
+            return (actual->next);
+        while (actual && strcmp(actual->separator, "||") == 0)
             actual = actual->next;
         return (actual);
     }
-    if (ret != 0 && strcmp(actual->separator, "||") == 0) {
-        while (actual && ret != 0 && strcmp(actual->separator, "||") == 0)
+    if (ret != 0) {
+        if (strcmp(actual->separator, "||") == 0)
+            return (actual->next);
+        while (actual && strcmp(actual->separator, "&&") == 0)
             actual = actual->next;
         return (actual);
     }

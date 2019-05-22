@@ -493,43 +493,50 @@ NAME="Testing && commands"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
-  echo 'ls -l && echo hello everyone && unknown && ls -l'
-  echo 'echo List && ls -l'
+  echo 'echo 1 && echo 2 && echo 3 && echo 4'
 [702-END]
 
 [703]
+NAME="Testing && commands2"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l && echo hello everyone && unknown && ls -l'
+[703-END]
+
+[704]
 NAME="Testing ||"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'lzz || echo yes'
-[703-END]
+[704-END]
 
-[704]
+[705]
 NAME="Testing Multiple ||"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'ls || ls tutu || echo fini aussi'
-[704-END]
+[705-END]
 
-[705]
+[706]
 NAME="Testing || and &&"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'ls || echo no || echo lol && echo yes'
-[705-END]
+[706-END]
 
-[706]
+[707]
 NAME="Testing && and || commands"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'unknown && echo ok || echo nop'
-[706-END]
+[707-END]
 
-[707]
+[708]
 NAME="Testing globbing ???"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -537,9 +544,9 @@ TESTS=
   echo 'ls > azertyuiop'
   echo 'cat aze???uiop'
   echo 'rm azertyuiop'
-[707-END]
+[708-END]
 
-[708]
+[709]
 NAME="Testing globbing ***"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -547,9 +554,9 @@ TESTS=
   echo 'ls > azertyuiop.log'
   echo 'cat *.log'
   echo 'rm azertyuiop.log'
-[708-END]
+[709-END]
 
-[709]
+[710]
 NAME="Testing globbing ****"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -557,17 +564,17 @@ TESTS=
   echo 'ls > azertyuiop.log'
   echo 'cat azer***p.*g'
   echo 'rm azertyuiop.log'
-[709-END]
+[710-END]
 
-[710]
+[711]
 NAME="Scripting"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo './src/tst.42sh'
-[710-END]
+[711-END]
 
-[711]
+[712]
 NAME="Testing local and env variables"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -584,9 +591,9 @@ TESTS=
   echo '$a'
   echo '$b'
   echo '$PATH'
-[711-END]
+[712-END]
 
-[712]
+[713]
 NAME="Inhibitor"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -596,4 +603,4 @@ TESTS=
   echo 'rm -rf to\ to'
   echo 'set a=lol\ lol'
   echo '$a'
-[712-END]
+[713-END]
