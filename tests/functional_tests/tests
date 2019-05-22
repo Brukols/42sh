@@ -365,14 +365,22 @@ TESTS=
 [601-END]
 
 [602]
+NAME="Multiple comma separator"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l ; ; ; ; ;; ; ; ; ; ;;;;; echo OUI'
+[602-END]
+
+[603]
 NAME="Simple pipe"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo "ls -l /etc | grep sh"
-[602-END]
+[603-END]
 
-[603]
+[604]
 NAME="A pipe with a builtin ?"
 SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
 CLEAN="PATH=$OLDPATH"
@@ -381,17 +389,17 @@ TESTS=
   echo '/bin/ls | cd /usr'
   echo 'ls -l'
   echo 'exit 45|cat /etc/resolv.conf'
-[603-END]
+[604-END]
 
-[604]
+[605]
 NAME="A pipe with big input"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'ls /dev | grep tty | sort -r | rev'
-[604-END]
+[605-END]
 
-[605]
+[606]
 NAME="Advanced pipe"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -399,9 +407,9 @@ TESTS=
   echo 'cat /etc/passwd | tr : # | tr -s abcdefghijklmnopqrstuvwxyz| cut -c 2 | grep -e a -e b -e\
    c -e d -e e -e f -e g -e h -e i -e j -e k -e l -e m -e n -e o -e p -e q -e r -e s -e \
   t -e u -e v -e w -e x -e y -e z |sort|uniq -c
-[605-END]
+[606-END]
 
-[606]
+[607]
 NAME="Simple right redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -409,17 +417,17 @@ TESTS=
   echo 'ls -l /dev > toto'
   echo 'cat toto'
   echo 'rm toto'
-[606-END]
+[607-END]
 
-[607]
+[608]
 NAME="Wrong simple right redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'ls -l /dev >'
-[607-END]
+[608-END]
 
-[608]
+[609]
 NAME="Simple left redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -427,17 +435,17 @@ TESTS=
   echo 'ls -l /dev > toto'
   echo 'grep tty < toto'
   echo 'rm toto'
-[608-END]
+[609-END]
 
-[609]
+[610]
 NAME="Wrong simple left redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'grep tty < ls -l /dev'
-[609-END]
+[610-END]
 
-[610]
+[611]
 NAME="Double right redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -446,9 +454,9 @@ TESTS=
   echo 'ls -l /home >> toto'
   echo 'cat toto'
   echo 'rm toto'
-[610-END]
+[611-END]
 
-[611]
+[612]
 NAME="Pipe and redirection in file"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -456,9 +464,9 @@ TESTS=
   echo 'ls -l /dev | grep tty > data'
   echo 'cat data'
   echo 'rm data'
-[611-END]
+[612-END]
 
-[612]
+[613]
 NAME="Input of file and pipe"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -466,7 +474,7 @@ TESTS=
   echo 'ls /dev > data'
   echo 'cat < data | grep tty'
   echo 'rm data'
-[612-END]
+[613-END]
 
 ***************************
        FEATURES TEST
@@ -481,22 +489,39 @@ TESTS=
 [701-END]
 
 [702]
+NAME="Testing && commands"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l && echo hello everyone && unknown && ls -l'
+  echo 'echo List && ls -l'
+[702-END]
+
+[703]
 NAME="Testing ||"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'lzz || echo yes'
-[702-END]
+[703-END]
 
-[703]
+[704]
 NAME="Testing || and &&"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'ls || echo no && echo yes'
-[703-END]
+[704-END]
 
-[704]
+[705]
+NAME="Testing && and || commands"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'unknown && echo "ok" || echo "nop"'
+[705-END]
+
+[706]
 NAME="Testing globbing ???"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -504,9 +529,9 @@ TESTS=
   echo 'ls > azertyuiop'
   echo 'cat aze???uiop'
   echo 'rm azertyuiop'
-[704-END]
+[706-END]
 
-[705]
+[707]
 NAME="Testing globbing ***"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -514,9 +539,9 @@ TESTS=
   echo 'ls > azertyuiop.log'
   echo 'cat *.log'
   echo 'rm azertyuiop.log'
-[705-END]
+[707-END]
 
-[706]
+[708]
 NAME="Testing globbing ****"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -524,17 +549,17 @@ TESTS=
   echo 'ls > azertyuiop.log'
   echo 'cat azer***p.*g'
   echo 'rm azertyuiop.log'
-[706-END]
+[708-END]
 
-[707]
+[709]
 NAME="Scripting"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo './src/tst.42sh'
-[707-END]
+[709-END]
 
-[708]
+[710]
 NAME="Testing local and env variables"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -551,9 +576,9 @@ TESTS=
   echo '$a'
   echo '$b'
   echo '$PATH'
-[708-END]
+[710-END]
 
-[709]
+[711]
 NAME="Inhibitor"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -563,4 +588,4 @@ TESTS=
   echo 'rm -rf to\ to'
   echo 'set a=lol\ lol'
   echo '$a'
-[709-END]
+[711-END]
