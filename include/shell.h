@@ -186,4 +186,7 @@ char **get_value_name(t_info *, char *);
 int change_tab_command(t_command *, char **, int, int);
 bool is_alphanumeric(char);
 
+char **command_in_array(char *str, char *sep);
+char *delete_one_chara(char *str, int pos);
+
 #endif

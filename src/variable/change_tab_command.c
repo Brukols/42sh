@@ -32,10 +32,10 @@ int delete_character(t_command *cmd, int i, int a)
 
 int delete_the_name(t_command *cmd, int i, int a)
 {
-    if (delete_character(cmd, i, a) == EXIT_FAILURE)
+    if (!(cmd->tab_command[i] = delete_one_chara(cmd->tab_command[i], a)))
         return (EXIT_FAILURE);
     while (cmd->tab_command[i][a] && is_alphanumeric(cmd->tab_command[i][a])) {
-        if (delete_character(cmd, i, a) == EXIT_FAILURE)
+        if (!(cmd->tab_command[i] = delete_one_chara(cmd->tab_command[i], a)))
             return (EXIT_FAILURE);
     }
     return (EXIT_SUCCESS);
