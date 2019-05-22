@@ -521,3 +521,15 @@ TESTS=
   echo '$b'
   echo '$PATH'
 [708-END]
+
+[709]
+NAME="Inhibitor"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls \ '
+  echo 'mkdir to\ to'
+  echo 'rm -rf to\ to'
+  echo 'set a=lol\ lol'
+  echo '$a'
+[709-END]
