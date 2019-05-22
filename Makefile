@@ -15,7 +15,6 @@ SRC	=	src/main.c	\
 		src/builtin/builtin_redirections/double_right_builtin_redirection.c	\
 		src/builtin/builtin_redirections/pip_builtin_redirection.c	\
 		src/builtin/builtin_redirections/right_builtin_redirection.c	\
-		src/sh/42rc.c	\
 		src/builtin/builtin_redirections/left_builtin_redirection.c	\
 		src/builtin/env/my_env/my_env.c	\
 		src/builtin/env/my_setenv/add_venv.c	\
@@ -51,9 +50,7 @@ SRC	=	src/main.c	\
 		src/fork/child/child_process.c	\
 		src/fork/child/get_right_path.c	\
 		src/fork/wait_child/wait_end_all_exec.c	\
-		src/history/add_in_history.c	\
-		src/history/history.c	\
-		src/history/open_file_history.c	\
+		src/history/init_history.c	\
 		src/free/delete_all.c	\
 		src/free/delete_builtin.c	\
 		src/free/delete_list.c	\
