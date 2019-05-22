@@ -16,7 +16,7 @@ int shell(int argc, char **argv, char **env)
     }
 
     prepare_signal();
-    print_prompt();
+    print_prompt(shell->fd_read);
 
     if (my_sh(shell) == RETURN_FAILURE) {
         delete_all(shell);

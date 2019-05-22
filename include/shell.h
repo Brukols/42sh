@@ -145,7 +145,7 @@ void free_variable(t_variable *);
 /* SH */
 int my_sh(t_info *shell);
 t_info *prepare_info(int argc, char **argv, char **env);
-void print_prompt(void);
+void print_prompt(int fd);
 int shell(int argc, char **argv, char **env);
 /* COMMAND */
 int do_execve(t_info *shell, t_command *command);

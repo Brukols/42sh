@@ -15,7 +15,7 @@ int child_process(t_info *shell, t_command *command)
 
     path = get_right_path(command->tab_command[0], path_tab);
     free_array(path_tab);
-    if (path == NULL) {
+    if (path == NULL || check_path(path) == -1) {
         my_printe("%s: Command not found.\n", command->tab_command[0]);
     } else {
         execve(path, command->tab_command, shell->env);
