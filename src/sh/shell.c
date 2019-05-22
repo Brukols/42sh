@@ -14,7 +14,6 @@ int shell(int argc, char **argv, char **env)
     if (shell == NULL) {
         return (EXIT_ERROR);
     }
-
     prepare_signal();
     print_prompt(shell->fd_read);
 
