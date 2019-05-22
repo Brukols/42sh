@@ -20,7 +20,6 @@ int history(t_info *shell, t_command *command)
     char *buffer = NULL;
     char **array;
     FILE *stream;
-
     (void)shell;
     if (get_size_array(command->tab_command) != 1)
         return (RETURN_FAILURE);
