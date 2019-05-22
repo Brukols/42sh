@@ -7,6 +7,14 @@
 
 #include "shell.h"
 
+int already_path(char *path)
+{
+    for (int i = 0; path[i]; i++)
+        if (path[i] == '/')
+            return (1);
+    return (0);
+}
+
 int check_path(char *path)
 {
     if (path == NULL)
@@ -20,6 +28,7 @@ char *get_right_path(char *path, char **path_tab)
 {
     char *right_path = my_strdup(path);
     int i = 0;
+    if (already_path(right_path)) return (right_path);
     for (i = 0; check_path(right_path) == -1 && path_tab[i] != NULL; i++) {
         free(right_path);
         right_path = malloc(sizeof(char) * (my_strlen(path_tab[i])
