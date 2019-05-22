@@ -7,8 +7,8 @@
 
 #include "shell.h"
 
-void print_prompt(void)
+void print_prompt(int fd)
 {
-    if (isatty(0))
+    if (isatty(fd))
         my_printf("$> ");
 }

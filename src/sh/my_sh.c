@@ -17,7 +17,7 @@ int my_sh(t_info *shell)
         reset_command(shell);
         if (shell->exit)
             return (RETURN_SUCCESS);
-        print_prompt();
+        print_prompt(shell->fd_read);
     }
     return (RETURN_SUCCESS);
 }
