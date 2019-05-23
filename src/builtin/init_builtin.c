@@ -9,7 +9,7 @@
 
 t_builtin **init_builtin(void)
 {
-    t_builtin **builtin = malloc(sizeof(t_builtin *) * (7 + 1));
+    t_builtin **builtin = malloc(sizeof(t_builtin *) * (8 + 1));
     if (builtin == NULL)
         return (NULL);
     int (*ft[8])(t_info*, t_command*) =
