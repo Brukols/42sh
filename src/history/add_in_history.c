@@ -62,6 +62,11 @@ int add_in_history(char *command_line)
 
     if (fd == -1)
         return (-1);
+    if (command_line == NULL) {
+        free(time);
+        close(fd);
+        return(-1);
+    }
     if ((nb_command = find_nb_command_line()) == NULL) {
         close(fd);
         return (-1);

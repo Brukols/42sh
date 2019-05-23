@@ -13,18 +13,13 @@ void print_end_array(char **array)
         my_printf("-%s", array[i]);
 }
 
-int history(t_info *shell, t_command *command)
+int loop_print_history(FILE *stream)
 {
     size_t len = 0;
     int rd = 0;
     char *buffer = NULL;
     char **array;
-    FILE *stream;
-    (void)shell;
-    if (get_size_array(command->tab_command) != 1)
-        return (RETURN_FAILURE);
-    if ((stream = fopen(".history_42sh", "w")) == NULL)
-        return (RETURN_FAILURE);
+
     while ((rd = getline(&buffer, &len, stream)) != -1) {
         buffer[rd] = '\0';
         if ((array = my_str_to_word_array(buffer, '-')) == NULL) {
@@ -38,6 +33,23 @@ int history(t_info *shell, t_command *command)
         free_array(array);
     }
     free(buffer);
+    return (RETURN_SUCCESS);
+}
+
+int history(t_info *shell, t_command *command)
+{
+    FILE *stream;
+    char *path;
+    (void)shell;
+
+    if (get_size_array(command->tab_command) != 1)
+        return (RETURN_FAILURE);
+    if ((path = recup_path_history()) == NULL)
+        return (RETURN_FAILURE);
+    if ((stream = fopen(path, "r")) == NULL)
+        return (RETURN_FAILURE);
+    if (loop_print_history(stream) == RETURN_FAILURE)
+        return (RETURN_FAILURE);
     fclose(stream);
     return (RETURN_SUCCESS);
 }
