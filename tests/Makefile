@@ -69,7 +69,7 @@ SRC_TEST	=	tests_redirect.c	\
 
 OBJECTS	=	$(SRC:.c=.o) $(SRC_TEST:.c=.o) $(LIB_TEST:.c=.o)
 
-CFLAGS	=	-W -Wall -Wshadow -Wextra -Werror -I../lib/include -I../include
+CFLAGS	=	-W -Wall -Wshadow -Wextra -Werror -I../lib/include -I../include --coverage
 
 LDFLAGS	=	-L./../lib/ --coverage -lmy -lcriterion
 
@@ -89,6 +89,8 @@ all: $(OBJECTS)
 clean:
 	$(MAKE) --no-print-directory -s -C functional_tests/ clean
 	rm -rf $(OBJECTS)
+	rm *.gcda
+	rm *.gcno
 
 fclean:	clean
 	$(MAKE) --no-print-directory -s -C functional_tests/ fclean
