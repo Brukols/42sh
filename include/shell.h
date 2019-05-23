@@ -189,8 +189,10 @@ char **get_value_name(t_info *, char *);
 int change_tab_command(t_command *, char **, int, int);
 bool is_alphanumeric(char);
 
+/* INHIBITOR */
 char **command_in_array(char *str, char *sep);
 char *delete_one_chara(char *str, int pos);
 bool no_inhibitor(char *str, int i);
+char **delete_line_array(char **arr, int i);
 
 #endif

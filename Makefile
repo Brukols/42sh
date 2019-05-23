@@ -92,6 +92,7 @@ SRC	=	src/main.c	\
 		src/variable/remplace_variable.c	\
 		src/inhibitor/command_in_array.c	\
 		src/inhibitor/no_inhibitor.c		\
+		src/inhibitor/delete_line_array.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

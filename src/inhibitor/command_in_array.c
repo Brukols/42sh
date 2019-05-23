@@ -26,6 +26,8 @@ char *fill_next_cmd(char *str, int *i, char *sep)
     for (; str[*i] && is_a_separator(str[*i], sep) == false; (*i)++, a++) {
         if (str[*i] == '\\' && !str[*i + 1]) {
             *i += 1;
+            cmd[a] = str[*i];
+            a++;
             break;
         }
         if (str[*i] == '\\' && str[*i + 1] != '$') {
@@ -37,6 +39,19 @@ char *fill_next_cmd(char *str, int *i, char *sep)
     }
     cmd[a] = '\0';
     return (cmd);
+}
+
+char **delete_empty_command(char **arr)
+{
+    for (int i = 0; arr[i]; i++) {
+        if (my_strlen(arr[i]) == 0) {
+            arr = delete_line_array(arr, i);
+            i--;
+        }
+        if (!arr)
+            return (NULL);
+    }
+    return (arr);
 }
 
 char **command_in_array(char *str, char *sep)
@@ -61,5 +76,5 @@ char **command_in_array(char *str, char *sep)
             return (NULL);
         i++;
     }
-    return (cmd);
+    return (delete_empty_command(cmd));
 }
