@@ -89,8 +89,8 @@ all: $(OBJECTS)
 clean:
 	$(MAKE) --no-print-directory -s -C functional_tests/ clean
 	rm -rf $(OBJECTS)
-	rm *.gcda
-	rm *.gcno
+	rm -rf *.gcda
+	rm -rf *.gcno
 
 fclean:	clean
 	$(MAKE) --no-print-directory -s -C functional_tests/ fclean
