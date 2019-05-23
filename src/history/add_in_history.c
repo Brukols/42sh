@@ -59,13 +59,13 @@ int add_in_history(char *command_line)
     int fd = open_file_history();
     char *nb_command;
     char *time = find_time_command_line();
-
     if (fd == -1)
         return (-1);
-    if (command_line == NULL) {
+    if (command_line == NULL || command_line[0] == '\0' ||
+    command_line[0] == '\n') {
         free(time);
         close(fd);
-        return(-1);
+        return (-1);
     }
     if ((nb_command = find_nb_command_line()) == NULL) {
         close(fd);

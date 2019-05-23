@@ -46,8 +46,11 @@ int history(t_info *shell, t_command *command)
         return (RETURN_FAILURE);
     if ((path = recup_path_history()) == NULL)
         return (RETURN_FAILURE);
-    if ((stream = fopen(path, "r")) == NULL)
+    if ((stream = fopen(path, "r")) == NULL) {
+        free(path);
         return (RETURN_FAILURE);
+    }
+    free(path);
     if (loop_print_history(stream) == RETURN_FAILURE)
         return (RETURN_FAILURE);
     fclose(stream);
