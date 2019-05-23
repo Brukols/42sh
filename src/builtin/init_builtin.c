@@ -15,7 +15,7 @@ t_builtin **init_builtin(void)
     int (*ft[7])(t_info*, t_command*) =
     {&my_cd, &my_setenv, &my_unsetenv, &my_env, &my_set, &my_unset, &history};
     char *name[] = {"cd", "setenv", "unsetenv", "env", "set", "unset",
-    "history"};
+        "history"};
     for (int i = 0; i < 7; i++) {
         builtin[i] = malloc(sizeof(t_builtin));
         if (builtin[i] == NULL)
