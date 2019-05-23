@@ -82,6 +82,8 @@ char *search_env(char **env, char *search);
 int verif_arg_env(char **arg);
 int is_in_env(char **env, char *new);
 char **repair_env(char **env);
+/*REPEAT*/
+int my_repeat(t_info *shell, t_command *command);
 /*ENV*/
 int my_env(t_info *shell, t_command *command);
 /*CD*/
