@@ -42,6 +42,7 @@ SRC	=	src/main.c	\
 		src/builtin/set/my_set/delete_quotation_set.c	\
 		src/builtin/set/my_set/set_variable.c	\
 		src/builtin/set/my_unset/my_unset.c	\
+		src/builtin/where/where.c	\
 		src/builtin/which/which.c	\
 		src/fork/create_process.c	\
 		src/fork/child/redirections/child_redirection.c	\

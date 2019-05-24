@@ -89,6 +89,9 @@ int my_repeat(t_info *shell, t_command *command);
 /* WHICH */
 int error_which(t_command *command);
 int my_which(t_info *shell, t_command *command);
+/* WHERE */
+int error_where(t_command *command);
+int my_where(t_info *shell, t_command *command);
 /*ENV*/
 int my_env(t_info *shell, t_command *command);
 /*CD*/
