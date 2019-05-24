@@ -9,14 +9,20 @@
 
 t_builtin **init_builtin(void)
 {
-    t_builtin **builtin = malloc(sizeof(t_builtin *) * (7 + 1));
+    t_builtin **builtin = malloc(sizeof(t_builtin *) * (8 + 1));
     if (builtin == NULL)
         return (NULL);
-    int (*ft[7])(t_info*, t_command*) =
-    {&my_cd, &my_setenv, &my_unsetenv, &my_env, &my_set, &my_unset, &history};
+    int (*ft[8])(t_info*, t_command*) =
+    {&my_cd, &my_setenv, &my_unsetenv, &my_env, &my_set, &my_unset, &history,
+        &my_repeat};
     char *name[] = {"cd", "setenv", "unsetenv", "env", "set", "unset",
+<<<<<<< HEAD
         "history"};
     for (int i = 0; i < 7; i++) {
+=======
+        "history", "repeat"};
+    for (int i = 0; i < 8; i++) {
+>>>>>>> repeat
         builtin[i] = malloc(sizeof(t_builtin));
         if (builtin[i] == NULL)
             return (NULL);
@@ -27,6 +33,6 @@ t_builtin **init_builtin(void)
         }
         builtin[i]->ft = ft[i];
     }
-    builtin[7] = NULL;
+    builtin[8] = NULL;
     return (builtin);
 }

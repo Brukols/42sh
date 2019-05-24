@@ -35,6 +35,7 @@ SRC	=	src/main.c	\
 		src/builtin/my_cd/my_cd.c	\
 		src/builtin/my_cd/update_envcd.c	\
 		src/builtin/my_cd/verif_cd.c	\
+		src/builtin/repeat/repeat.c	\
 		src/builtin/set/my_set/my_set.c	\
 		src/builtin/set/my_set/check_alphanumeric_name.c	\
 		src/builtin/set/my_set/delete_all_quotation_set.c	\

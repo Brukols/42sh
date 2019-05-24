@@ -633,3 +633,27 @@ CLEAN=""
 TESTS=
   echo 'ls \'
 [716-END]
+
+[717]
+NAME="Simple repeat test"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'repeat 10 ls -l'
+[717-END]
+
+[718]
+NAME="Repeat with pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'repeat 10 ls -l | grep include'
+[718-END]
+
+[719]
+NAME="Repeat error"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'repeat -1'
+[719-END]
