@@ -86,6 +86,9 @@ char **repair_env(char **env);
 long int error_my_repeat(t_command *command);
 t_command *create_command_loop(t_command *command);
 int my_repeat(t_info *shell, t_command *command);
+/* WHICH */
+int error_which(t_command *command);
+int my_which(t_info *shell, t_command *command);
 /*ENV*/
 int my_env(t_info *shell, t_command *command);
 /*CD*/

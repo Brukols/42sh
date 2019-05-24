@@ -657,3 +657,39 @@ CLEAN=""
 TESTS=
   echo 'repeat -1'
 [719-END]
+
+[720]
+NAME="Which simple"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which ls'
+[720-END]
+
+[721]
+NAME="Advanced which"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which ls 1 2 3 cat'
+  echo 'which chut'
+[721-END]
+
+[722]
+NAME="Which with pipe and redirect"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which cat | cat -e'
+  echo 'which cat cat cat > data'
+  echo 'cat data'
+  echo 'rm data'
+[722-END]
+
+[723]
+NAME="Which Error"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which'
+[723-END]
