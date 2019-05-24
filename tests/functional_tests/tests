@@ -599,6 +599,16 @@ TESTS=
   echo '$a'
   echo '$b'
   echo '$PATH'
+  echo '$term'
+  echo 'setenv term'
+  echo '$term'
+  echo 'setenv term lol'
+  echo '$term'
+  echo '$cwd'
+  echo 'cwd'
+  echo 'unsetenv term'
+  echo '$term'
+  echo 'ls $cwd'
 [712-END]
 
 [713]
