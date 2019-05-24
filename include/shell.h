@@ -163,7 +163,7 @@ char *recup_path_history(void);
 /* SH */
 int my_sh(t_info *shell);
 t_info *prepare_info(int argc, char **argv, char **env);
-void print_prompt(int fd);
+void print_prompt(t_info *shell);
 int shell(int argc, char **argv, char **env);
 /* COMMAND */
 int do_execve(t_info *shell, t_command *command);
