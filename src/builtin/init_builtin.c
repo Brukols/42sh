@@ -13,9 +13,10 @@ t_builtin **init_builtin(void)
     if (builtin == NULL)
         return (NULL);
     int (*ft[8])(t_info*, t_command*) =
-    {&my_cd, &my_setenv, &my_unsetenv, &my_env, &my_set, &my_unset, &history, &my_repeat};
+    {&my_cd, &my_setenv, &my_unsetenv, &my_env, &my_set, &my_unset, &history,
+        &my_repeat};
     char *name[] = {"cd", "setenv", "unsetenv", "env", "set", "unset",
-    "history", "repeat"};
+        "history", "repeat"};
     for (int i = 0; i < 8; i++) {
         builtin[i] = malloc(sizeof(t_builtin));
         if (builtin[i] == NULL)
