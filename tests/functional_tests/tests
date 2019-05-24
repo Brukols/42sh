@@ -476,6 +476,14 @@ TESTS=
   echo 'rm data'
 [613-END]
 
+[614]
+NAME="Just one pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '|'
+[614-END]
+
 ***************************
        FEATURES TEST
 ***************************

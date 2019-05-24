@@ -15,7 +15,7 @@ int command_pip(t_command *command, t_info *shell)
         return (EXIT_FAILURE);
     if ((list = create_tab_command(list)) == NULL)
         return (RETURN_FAILURE);
-    if (list->start == NULL || list->start->command[0] == 0)
+    if (list->start == NULL || (list->len == 1 && list->start->command[0] == 0))
         my_printe("Invalid null command.\n");
 
     for (t_command *actual = list->start; actual; actual = actual->next) {
