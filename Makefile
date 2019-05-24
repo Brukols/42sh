@@ -93,6 +93,7 @@ SRC	=	src/main.c	\
 		src/variable/get_value_name.c		\
 		src/variable/remplace_the_name.c	\
 		src/variable/remplace_variable.c	\
+		src/variable/get_value_special_variable.c	\
 		src/inhibitor/command_in_array.c	\
 		src/inhibitor/no_inhibitor.c		\
 		src/inhibitor/delete_line_array.c	\

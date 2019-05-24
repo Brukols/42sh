@@ -200,6 +200,9 @@ int parse_command(t_command *, t_info *);
 char **get_value_name(t_info *, char *);
 int change_tab_command(t_command *, char **, int, int);
 bool is_alphanumeric(char);
+char **get_value_special_variable(t_info *, char *);
+char **get_value_in_env(t_info *shell, char *name);
+char *get_name_variable(t_command *cmd, int i, int a);
 
 /* INHIBITOR */
 char **command_in_array(char *str, char *sep);
