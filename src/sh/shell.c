@@ -14,10 +14,10 @@ int shell(int argc, char **argv, char **env)
     if (shell == NULL) {
         return (EXIT_ERROR);
     }
-
     prepare_signal();
     print_prompt();
-
+    if ((shell->aliases = init_aliases()) == NULL)
+        return EXIT_ERROR;
     if (my_sh(shell) == RETURN_FAILURE) {
         delete_all(shell);
         return (EXIT_ERROR);

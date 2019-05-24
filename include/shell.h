@@ -34,9 +34,19 @@ typedef struct s_variable
 #define RETURN_FAILURE -1
 #define RETURN_SUCCESS 0
 
+typedef struct aliase_s
+{
+    int position;
+    char *new_name;
+    char *command;
+    struct aliase_s *next;
+    struct aliase_s *prev;
+} aliase_t;
+
 typedef struct s_info
 {
     struct s_builtin **builtin;
+    struct aliase_s *aliases;
     struct s_variable *variable;
     char **env;
     char *command_line;
@@ -160,6 +170,9 @@ int command_double_sep(t_command *command, t_info *shell);
 /* SIGNAL */
 int prepare_signal(void);
 void sigint_handler(int sig);
+
+/* ALIAS */
+aliase_t *init_aliases(void);
 
 /* LIST */
 t_list *create_list(void);
