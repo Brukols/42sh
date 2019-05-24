@@ -9,17 +9,17 @@
 
 t_builtin **init_builtin(void)
 {
-    t_builtin **builtin = malloc(sizeof(t_builtin *) * (6 + 1));
+    t_builtin **builtin = malloc(sizeof(t_builtin *) * (10 + 1));
     if (builtin == NULL)
         return (NULL);
-    int (*ft[6])(t_info*, t_command*) =
-    {&my_cd, &my_setenv, &my_unsetenv, &my_env, &my_set, &my_unset};
-    char *name[] = {"cd", "setenv", "unsetenv", "env", "set", "unset"};
-
-    for (int i = 0; i < 6; i++) {
+    int (*ft[10])(t_info*, t_command*) =
+    {&my_cd, &my_setenv, &my_unsetenv, &my_env, &my_set, &my_unset, &history,
+        &my_repeat, &my_which, &my_where};
+    char *name[] = {"cd", "setenv", "unsetenv", "env", "set", "unset",
+        "history", "repeat", "which", "where"};
+    for (int i = 0; i < 10; i++) {
         builtin[i] = malloc(sizeof(t_builtin));
-        if (builtin[i] == NULL)
-            return (NULL);
+        if (builtin[i] == NULL) return (NULL);
         builtin[i]->name = my_strdup(name[i]);
         if (builtin[i]->name == NULL) {
             delete_builtin(builtin);
@@ -27,6 +27,6 @@ t_builtin **init_builtin(void)
         }
         builtin[i]->ft = ft[i];
     }
-    builtin[6] = NULL;
+    builtin[10] = NULL;
     return (builtin);
 }

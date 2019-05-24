@@ -14,9 +14,10 @@ t_list *command_to_list(char *str, char *sep)
     if ((list = create_list()) == NULL)
         return (NULL);
     for (int i = 0; str[i] != '\0'; i++) {
-        if (!check_sep(str[i], sep))
+        if (!check_sep(str[i], sep) || no_inhibitor(str, i) == true)
             len_word++;
-        if (!check_sep(str[i], sep) && check_sep(str[i + 1], sep)) {
+        if ((!check_sep(str[i], sep) && check_sep(str[i + 1], sep) && \
+str[i] != '\\') || !str[i + 1]) {
             t_command *command = create_command(len_word, str, i);
             if (command == NULL)
                 return (NULL);

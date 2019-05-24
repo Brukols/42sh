@@ -49,10 +49,10 @@ typedef struct s_info
     struct aliase_s *aliases;
     struct s_variable *variable;
     char **env;
+    FILE *_42rc;
     char *command_line;
     char *path;
     int exit;
-    FILE *_42rc;
     int status;
     pid_t child_pid;
     pid_t gr_pid;
@@ -92,6 +92,17 @@ char *search_env(char **env, char *search);
 int verif_arg_env(char **arg);
 int is_in_env(char **env, char *new);
 char **repair_env(char **env);
+/*REPEAT*/
+long int error_my_repeat(t_command *command);
+t_command *create_command_loop(t_command *command);
+int my_repeat(t_info *shell, t_command *command);
+/* WHICH */
+int error_which(t_command *command);
+int my_which(t_info *shell, t_command *command);
+/* WHERE */
+int error_where(t_command *command);
+int search_where(t_command *command, char **path_tab, char *right_path);
+int my_where(t_info *shell, t_command *command);
 /*ENV*/
 int my_env(t_info *shell, t_command *command);
 /*CD*/
@@ -131,6 +142,7 @@ pid_t create_process(void);
 int child_process(t_info *shell, t_command *command);
 int child_redirection(t_info *shell, t_command *command);
 int check_path(char *path);
+int already_path(char *path);
 char *get_right_path(char *path, char **path_tab);
 /* REDIRECTION */
 int child_redirection(t_info *shell, t_command *command);
@@ -152,10 +164,16 @@ void reset_command(t_info *shell);
 void reset_redirect(t_info *shell);
 void free_variable(t_variable *);
 
+/* HISTORY */
+int add_in_history(char *command_line);
+int history(t_info *shell, t_command *command);
+int open_file_history(void);
+char *recup_path_history(void);
+
 /* SH */
 int my_sh(t_info *shell);
 t_info *prepare_info(int argc, char **argv, char **env);
-void print_prompt(void);
+void print_prompt(t_info *shell);
 int shell(int argc, char **argv, char **env);
 /* COMMAND */
 int do_execve(t_info *shell, t_command *command);
@@ -195,5 +213,11 @@ int parse_command(t_command *, t_info *);
 char **get_value_name(t_info *, char *);
 int change_tab_command(t_command *, char **, int, int);
 bool is_alphanumeric(char);
+
+/* INHIBITOR */
+char **command_in_array(char *str, char *sep);
+char *delete_one_chara(char *str, int pos);
+bool no_inhibitor(char *str, int i);
+char **delete_line_array(char **arr, int i);
 
 #endif

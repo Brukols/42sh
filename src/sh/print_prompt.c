@@ -7,8 +7,12 @@
 
 #include "shell.h"
 
-void print_prompt(void)
+void print_prompt(t_info *shell)
 {
-    if (isatty(0))
+    char *logname = search_env(shell->env, "LOGNAME=");
+    if (logname != NULL)
+        my_printf("(%s) ", logname);
+    if (isatty(shell->fd_read))
         my_printf("$> ");
+    free(logname);
 }

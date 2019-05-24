@@ -12,7 +12,6 @@ SRC	=	src/main.c	\
 		src/builtin/is_builtin.c	\
 		src/builtin/do_builtin.c	\
 		src/list/init_aliases_list.c	\
-		src/sh/42rc.c	\
 		src/builtin/builtin_redirections/builtin_redirection.c	\
 		src/builtin/builtin_redirections/double_right_builtin_redirection.c	\
 		src/builtin/builtin_redirections/pip_builtin_redirection.c	\
@@ -37,12 +36,15 @@ SRC	=	src/main.c	\
 		src/builtin/my_cd/my_cd.c	\
 		src/builtin/my_cd/update_envcd.c	\
 		src/builtin/my_cd/verif_cd.c	\
+		src/builtin/repeat/repeat.c	\
 		src/builtin/set/my_set/my_set.c	\
 		src/builtin/set/my_set/check_alphanumeric_name.c	\
 		src/builtin/set/my_set/delete_all_quotation_set.c	\
 		src/builtin/set/my_set/delete_quotation_set.c	\
 		src/builtin/set/my_set/set_variable.c	\
 		src/builtin/set/my_unset/my_unset.c	\
+		src/builtin/where/where.c	\
+		src/builtin/which/which.c	\
 		src/fork/create_process.c	\
 		src/fork/child/redirections/child_redirection.c	\
 		src/fork/child/redirections/double_right_redirection.c	\
@@ -52,6 +54,10 @@ SRC	=	src/main.c	\
 		src/fork/child/child_process.c	\
 		src/fork/child/get_right_path.c	\
 		src/fork/wait_child/wait_end_all_exec.c	\
+		src/history/add_in_history.c	\
+		src/history/history.c	\
+		src/history/open_file_history.c	\
+		src/history/recup_path_history.c	\
 		src/free/delete_all.c	\
 		src/free/delete_builtin.c	\
 		src/free/delete_list.c	\
@@ -76,6 +82,7 @@ SRC	=	src/main.c	\
 		src/sh/command/do_execve.c	\
 		src/sh/command/is_skip_command.c	\
 		src/sh/command/parse_command.c	\
+		src/sh/42rc.c	\
 		src/sh/my_sh.c	\
 		src/sh/prepare_info.c	\
 		src/sh/print_prompt.c	\
@@ -87,6 +94,9 @@ SRC	=	src/main.c	\
 		src/variable/get_value_name.c		\
 		src/variable/remplace_the_name.c	\
 		src/variable/remplace_variable.c	\
+		src/inhibitor/command_in_array.c	\
+		src/inhibitor/no_inhibitor.c		\
+		src/inhibitor/delete_line_array.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

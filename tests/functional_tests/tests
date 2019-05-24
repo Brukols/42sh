@@ -67,6 +67,14 @@ TESTS=
   echo 'pwd'
 [103-END]
 
+[104]
+NAME="PATH4 : run path commands"
+SETUP="export TERM=xterm ; PATH='/'"
+CLEAN=""
+TESTS=
+  echo 'bin/ls'
+[104-END]
+
 *********************************************
        ENV, SETENV, UNSETENV TEST
 *********************************************
@@ -245,12 +253,52 @@ TESTS=
 ********************************************
 
 [401]
+NAME="space 1"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo -e "ls        -a                 -l             /usr"
+[401-END]
+
+[402]
+NAME="Only space"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "                                                    "
+[402-END]
+
+[403]
+NAME="Only tabulation"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "\\t\\t\\t\\t"
+[403-END]
+
+[404]
+NAME="Only tabulation and spaces"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "   \\t\\t            \\t\\t"
+[404-END]
+
+[405]
 NAME="many tab and space"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
-  echo -e "  \t\t    ls\t     \t-l    \t\t  \t -a /usr   \t\t"
-[401-END]
+  echo -e "  \t\t    ls\t     \t-l    \t\t  \t -a      /t  /usr   \t\t"
+[405-END]
+
+[406]
+NAME="Tabulation and spaces and command"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "   \\t\\t       ls -l     \\t\\t"
+[406-END]
 
 *******************************
        ERROR HANDLING TEST
@@ -317,14 +365,22 @@ TESTS=
 [601-END]
 
 [602]
+NAME="Multiple comma separator"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l ; ; ; ; ;; ; ; ; ; ;;;;; echo OUI'
+[602-END]
+
+[603]
 NAME="Simple pipe"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo "ls -l /etc | grep sh"
-[602-END]
+[603-END]
 
-[603]
+[604]
 NAME="A pipe with a builtin ?"
 SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
 CLEAN="PATH=$OLDPATH"
@@ -333,17 +389,17 @@ TESTS=
   echo '/bin/ls | cd /usr'
   echo 'ls -l'
   echo 'exit 45|cat /etc/resolv.conf'
-[603-END]
+[604-END]
 
-[604]
+[605]
 NAME="A pipe with big input"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'ls /dev | grep tty | sort -r | rev'
-[604-END]
+[605-END]
 
-[605]
+[606]
 NAME="Advanced pipe"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -351,9 +407,9 @@ TESTS=
   echo 'cat /etc/passwd | tr : # | tr -s abcdefghijklmnopqrstuvwxyz| cut -c 2 | grep -e a -e b -e\
    c -e d -e e -e f -e g -e h -e i -e j -e k -e l -e m -e n -e o -e p -e q -e r -e s -e \
   t -e u -e v -e w -e x -e y -e z |sort|uniq -c
-[605-END]
+[606-END]
 
-[606]
+[607]
 NAME="Simple right redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -361,17 +417,17 @@ TESTS=
   echo 'ls -l /dev > toto'
   echo 'cat toto'
   echo 'rm toto'
-[606-END]
+[607-END]
 
-[607]
+[608]
 NAME="Wrong simple right redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'ls -l /dev >'
-[607-END]
+[608-END]
 
-[608]
+[609]
 NAME="Simple left redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -379,17 +435,17 @@ TESTS=
   echo 'ls -l /dev > toto'
   echo 'grep tty < toto'
   echo 'rm toto'
-[608-END]
+[609-END]
 
-[609]
+[610]
 NAME="Wrong simple left redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'grep tty < ls -l /dev'
-[609-END]
+[610-END]
 
-[610]
+[611]
 NAME="Double right redirection"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -398,9 +454,9 @@ TESTS=
   echo 'ls -l /home >> toto'
   echo 'cat toto'
   echo 'rm toto'
-[610-END]
+[611-END]
 
-[611]
+[612]
 NAME="Pipe and redirection in file"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -408,9 +464,9 @@ TESTS=
   echo 'ls -l /dev | grep tty > data'
   echo 'cat data'
   echo 'rm data'
-[611-END]
+[612-END]
 
-[612]
+[613]
 NAME="Input of file and pipe"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -418,7 +474,15 @@ TESTS=
   echo 'ls /dev > data'
   echo 'cat < data | grep tty'
   echo 'rm data'
-[612-END]
+[613-END]
+
+[614]
+NAME="Just one pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '|'
+[614-END]
 
 ***************************
        FEATURES TEST
@@ -433,22 +497,54 @@ TESTS=
 [701-END]
 
 [702]
+NAME="Testing && commands"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo 1 && echo 2 && echo 3 && echo 4'
+[702-END]
+
+[703]
+NAME="Testing && commands2"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -l && echo hello everyone && unknown && ls -l'
+[703-END]
+
+[704]
 NAME="Testing ||"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo 'lzz || echo yes'
-[702-END]
+[704-END]
 
-[703]
+[705]
+NAME="Testing Multiple ||"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls || ls tutu || echo fini aussi'
+[705-END]
+
+[706]
 NAME="Testing || and &&"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
-  echo 'ls || echo no && echo yes'
-[703-END]
+  echo 'ls || echo no || echo lol && echo yes'
+[706-END]
 
-[704]
+[707]
+NAME="Testing && and || commands"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'unknown && echo ok || echo nop'
+[707-END]
+
+[708]
 NAME="Testing globbing ???"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -456,9 +552,9 @@ TESTS=
   echo 'ls > azertyuiop'
   echo 'cat aze???uiop'
   echo 'rm azertyuiop'
-[704-END]
+[708-END]
 
-[705]
+[709]
 NAME="Testing globbing ***"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -466,9 +562,9 @@ TESTS=
   echo 'ls > azertyuiop.log'
   echo 'cat *.log'
   echo 'rm azertyuiop.log'
-[705-END]
+[709-END]
 
-[706]
+[710]
 NAME="Testing globbing ****"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -476,17 +572,17 @@ TESTS=
   echo 'ls > azertyuiop.log'
   echo 'cat azer***p.*g'
   echo 'rm azertyuiop.log'
-[706-END]
+[710-END]
 
-[707]
+[711]
 NAME="Scripting"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
 TESTS=
   echo './src/tst.42sh'
-[707-END]
+[711-END]
 
-[708]
+[712]
 NAME="Testing local and env variables"
 SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
 CLEAN=""
@@ -503,4 +599,149 @@ TESTS=
   echo '$a'
   echo '$b'
   echo '$PATH'
-[708-END]
+[712-END]
+
+[713]
+NAME="Simple inhibitor"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls \ '
+  echo 'mkdir to\ to'
+  echo 'rm -rf to\ to'
+  echo 'set a=lol\ lol'
+  echo '$a'
+[713-END]
+
+[714]
+NAME="Hard inhibitor"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls \; ls'
+  echo '\ls'
+  echo 'ls \\'
+[714-END]
+
+[715]
+NAME="Inhibitor with redirection and pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls \| grep c'
+  echo 'ls \> lol'
+  echo 'cat lol'
+  echo 'rm -rf lol'
+[715-END]
+
+[716]
+NAME="Special inhibitor"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls \'
+[716-END]
+
+[717]
+NAME="Simple repeat test"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'repeat 10 ls -l'
+[717-END]
+
+[718]
+NAME="Repeat with pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'repeat 10 ls -l | grep include'
+[718-END]
+
+[719]
+NAME="Repeat error"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'repeat -1'
+[719-END]
+
+[720]
+NAME="Which simple"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which ls'
+[720-END]
+
+[721]
+NAME="Advanced which"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which ls 1 2 3 cat'
+  echo 'which chut'
+[721-END]
+
+[722]
+NAME="Which with pipe and redirect"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which cat | cat -e'
+  echo 'which cat cat cat > data'
+  echo 'cat data'
+  echo 'rm data'
+[722-END]
+
+[723]
+NAME="Which Error"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which'
+[723-END]
+
+[724]
+NAME="Where simple"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where ls'
+[724-END]
+
+[725]
+NAME="Advanced where"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where ls 1 2 3 cat'
+  echo 'where chut'
+[725-END]
+
+[726]
+NAME="Where with pipe and redirect"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where cat | cat -e'
+  echo 'where cat cat cat > data'
+  echo 'cat data'
+  echo 'rm data'
+[726-END]
+
+[727]
+NAME="Where Error"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where'
+[727-END]
+
+[728]
+NAME="Where Error 2"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where bin/ls'
+[728-END]
