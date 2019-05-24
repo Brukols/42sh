@@ -693,3 +693,47 @@ CLEAN=""
 TESTS=
   echo 'which'
 [723-END]
+
+[724]
+NAME="Where simple"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where ls'
+[724-END]
+
+[725]
+NAME="Advanced where"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where ls 1 2 3 cat'
+  echo 'where chut'
+[725-END]
+
+[726]
+NAME="Where with pipe and redirect"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where cat | cat -e'
+  echo 'where cat cat cat > data'
+  echo 'cat data'
+  echo 'rm data'
+[726-END]
+
+[727]
+NAME="Where Error"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where'
+[727-END]
+
+[728]
+NAME="Where Error 2"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where bin/ls'
+[728-END]

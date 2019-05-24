@@ -131,6 +131,7 @@ pid_t create_process(void);
 int child_process(t_info *shell, t_command *command);
 int child_redirection(t_info *shell, t_command *command);
 int check_path(char *path);
+int already_path(char *path);
 char *get_right_path(char *path, char **path_tab);
 /* REDIRECTION */
 int child_redirection(t_info *shell, t_command *command);
