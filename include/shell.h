@@ -91,6 +91,7 @@ int error_which(t_command *command);
 int my_which(t_info *shell, t_command *command);
 /* WHERE */
 int error_where(t_command *command);
+int search_where(t_command *command, char **path_tab, char *right_path);
 int my_where(t_info *shell, t_command *command);
 /*ENV*/
 int my_env(t_info *shell, t_command *command);
