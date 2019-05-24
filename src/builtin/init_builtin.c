@@ -16,13 +16,8 @@ t_builtin **init_builtin(void)
     {&my_cd, &my_setenv, &my_unsetenv, &my_env, &my_set, &my_unset, &history,
         &my_repeat};
     char *name[] = {"cd", "setenv", "unsetenv", "env", "set", "unset",
-<<<<<<< HEAD
-        "history"};
-    for (int i = 0; i < 7; i++) {
-=======
         "history", "repeat"};
     for (int i = 0; i < 8; i++) {
->>>>>>> repeat
         builtin[i] = malloc(sizeof(t_builtin));
         if (builtin[i] == NULL)
             return (NULL);
