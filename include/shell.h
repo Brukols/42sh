@@ -191,6 +191,12 @@ void sigint_handler(int sig);
 
 /* ALIAS */
 aliase_t *init_aliases(void);
+FILE *_42rc_is_filled(void);
+aliase_t *fill_42rc_since_file(aliase_t *alias, FILE *file);
+int split_alias_name_and_value(char *full_alias, \
+                               char separator, aliase_t *alias, int *i);
+bool bad_alias_line(char *alias);
+aliase_t *add_alias_in_list(char *new_name, char *command, aliase_t *alias);
 
 /* LIST */
 t_list *create_list(void);

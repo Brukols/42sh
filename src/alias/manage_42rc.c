@@ -2,24 +2,10 @@
 ** EPITECH PROJECT, 2019
 ** 42sh
 ** File description:
-** aliases
+** alias
 */
 
 #include "shell.h"
-
-aliase_t *add_alias_in_list(char *new_name, char *command, aliase_t *alias)
-{
-    for (; alias->next != NULL; alias = alias->next);
-    if ((alias->next = malloc(sizeof(aliase_t))) == NULL)
-        return NULL;
-    if ((alias->next->new_name = my_strdup(new_name)) == NULL)
-        return NULL;
-    if ((alias->next->command = my_strdup(command)) == NULL)
-        return NULL;
-    alias->next->next = NULL;
-    for (; alias->prev != NULL; alias = alias->prev);
-    return alias;
-}
 
 bool bad_alias_line(char *alias)
 {
@@ -83,8 +69,7 @@ FILE *_42rc_is_filled(void)
     int first_char = 0;
     int fd = 0;
 
-
-    if ((fd = open(".42rc", O_RDONLY | O_APPEND | O_CREAT, S_IRUSR | S_IRGRP | S_IROTH)) == -1)
+    if ((fd = open(".42rc", O_RDONLY | O_APPEND | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) == -1)
         exit(84);
     stream = fdopen(fd, "r");
     if (stream == NULL)
@@ -92,26 +77,6 @@ FILE *_42rc_is_filled(void)
     first_char = fgetc(stream);
     if (first_char == EOF)
         return NULL;
+    close(fd);
     return stream;
-}
-
-aliase_t *init_aliases(void)
-{
-    aliase_t *aliases = malloc(sizeof(aliase_t));
-    FILE *file = NULL;
-
-    if (aliases == NULL)
-        return NULL;
-    if ((file = _42rc_is_filled()) == NULL) {
-        aliases->prev = NULL;
-        if ((aliases->new_name = my_strdup("ls")) == NULL)
-            return NULL;
-        if ((aliases->command = my_strdup("ls")) == NULL)
-            return NULL;
-        aliases->next = NULL;
-        return aliases;
-    }
-    if ((aliases = fill_42rc_since_file(aliases, file)) == NULL)
-        return NULL;
-    return aliases;
 }
