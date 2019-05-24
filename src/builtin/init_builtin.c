@@ -19,8 +19,7 @@ t_builtin **init_builtin(void)
         "history", "repeat", "which", "where"};
     for (int i = 0; i < 10; i++) {
         builtin[i] = malloc(sizeof(t_builtin));
-        if (builtin[i] == NULL)
-            return (NULL);
+        if (builtin[i] == NULL) return (NULL);
         builtin[i]->name = my_strdup(name[i]);
         if (builtin[i]->name == NULL) {
             delete_builtin(builtin);
