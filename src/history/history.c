@@ -38,8 +38,7 @@ int loop_print_history(FILE *stream)
 
     while ((rd = getline(&buffer, &len, stream)) != -1) {
         buffer[rd] = '\0';
-        if ((end = recup_end_command(buffer)) == NULL)
-            return (RETURN_FAILURE);
+        if ((end = recup_end_command(buffer)) == NULL) return (RETURN_FAILURE);
         if ((array = my_str_to_word_array(buffer, '-')) == NULL) {
             free(end);
             free(buffer);

@@ -16,9 +16,12 @@ int error_where(t_command *command)
     return (RETURN_SUCCESS);
 }
 
-int search_where(t_command *command, char **path_tab, char *right_path)
+int search_where(t_command *command, char **path_tab,
+char *right_path, t_builtin **builtin)
 {
     for (int i = 1; command->tab_command[i]; i++) {
+        if (is_builtin(command->tab_command[i], builtin) != -1)
+            my_printf("%s is a shell built-in\n", command->tab_command[i]);
         if (already_path(command->tab_command[i])) {
             my_printe("where: / in command makes no sense\n");
             continue;
@@ -48,7 +51,8 @@ int my_where(t_info *shell, t_command *command)
     path = search_env(shell->env, "PATH=");
     path_tab = my_str_to_word_array(path, ':');
     free(path);
-    if (search_where(command, path_tab, right_path) == RETURN_FAILURE) {
+    if (search_where(command, path_tab, right_path, shell->builtin)
+    == RETURN_FAILURE) {
         free(right_path);
         free_array(path_tab);
         return (RETURN_FAILURE);
