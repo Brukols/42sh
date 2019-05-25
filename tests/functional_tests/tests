@@ -755,3 +755,37 @@ CLEAN=""
 TESTS=
   echo 'where bin/ls'
 [728-END]
+
+[729]
+NAME="Where builtin"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'where echo'
+  echo 'where unsetenv'
+  echo 'where setenv'
+  echo 'where set'
+  echo 'where unset'
+  echo 'where where'
+  echo 'where history'
+  echo 'where repeat'
+  echo 'where cd'
+  echo 'where env'
+[729-END]
+
+[730]
+NAME="Which builtin"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which echo'
+  echo 'which unsetenv'
+  echo 'which setenv'
+  echo 'which set'
+  echo 'which unset'
+  echo 'which where'
+  echo 'which history'
+  echo 'which repeat'
+  echo 'which cd'
+  echo 'which env'
+[730-END]
