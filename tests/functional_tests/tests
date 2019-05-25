@@ -771,6 +771,7 @@ TESTS=
   echo 'where repeat'
   echo 'where cd'
   echo 'where env'
+  echo 'where exit'
 [729-END]
 
 [730]
@@ -788,4 +789,15 @@ TESTS=
   echo 'which repeat'
   echo 'which cd'
   echo 'which env'
+  echo 'which exit'
 [730-END]
+
+[731]
+NAME="Echo builtin"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'which echo'
+  echo 'echo lol        mo    $PATH'
+  echo 'echo "lol"'
+[731-END]
