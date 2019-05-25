@@ -12,6 +12,8 @@ SRC	=	src/main.c	\
 		src/builtin/is_builtin.c	\
 		src/builtin/do_builtin.c	\
 		src/alias/init_aliases_list.c	\
+		src/alias/add_list_on_alias.c	\
+		src/alias/split_file.c		\
 		src/alias/manage_42rc.c		\
 		src/builtin/builtin_redirections/builtin_redirection.c	\
 		src/builtin/builtin_redirections/double_right_builtin_redirection.c	\
@@ -83,7 +85,6 @@ SRC	=	src/main.c	\
 		src/sh/command/do_execve.c	\
 		src/sh/command/is_skip_command.c	\
 		src/sh/command/parse_command.c	\
-		src/sh/42rc.c	\
 		src/sh/my_sh.c	\
 		src/sh/prepare_info.c	\
 		src/sh/print_prompt.c	\

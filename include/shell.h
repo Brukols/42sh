@@ -36,7 +36,6 @@ typedef struct s_variable
 
 typedef struct aliase_s
 {
-    int position;
     char *new_name;
     char *command;
     struct aliase_s *next;
@@ -197,6 +196,8 @@ int split_alias_name_and_value(char *full_alias, \
                                char separator, aliase_t *alias, int *i);
 bool bad_alias_line(char *alias);
 aliase_t *add_alias_in_list(char *new_name, char *command, aliase_t *alias);
+char *split_alias_value(char *all, int i);
+char *split_alias_name(char *all, int *i);
 
 /* LIST */
 t_list *create_list(void);

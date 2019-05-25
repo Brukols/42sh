@@ -7,6 +7,26 @@
 
 #include "shell.h"
 
+void display_aliase(aliase_t *alias)
+{
+    for (; alias->prev != NULL; alias = alias->prev);
+    for (; alias != NULL; alias = alias->next) {
+        printf("%s %s\n", alias->new_name, alias->command);
+    }
+}
+
+t_command *_42sh_alias(t_command *command, t_info *shell)
+{
+    FILE *file = NULL;
+
+    if ((file = _42rc_is_filled()) == NULL)
+        return command;
+    if ((shell->aliases = fill_42rc_since_file(shell->aliases, file)) == NULL)
+        return NULL;
+    display_aliase(shell->aliases);
+    return command;
+}
+
 int parse_command(t_command *command, t_info *shell)
 {
     int verif;
@@ -18,6 +38,8 @@ int parse_command(t_command *command, t_info *shell)
         shell->exit = 1;
         return (RETURN_SUCCESS);
     }
+    if ((command = _42sh_alias(command, shell)) == NULL)
+        return EXIT_ERROR;
     command->tab_command = apply_globbings(command->tab_command);
     if (command->tab_command == NULL)
         return (EXIT_ERROR);
