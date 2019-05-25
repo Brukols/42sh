@@ -97,6 +97,9 @@ SRC	=	src/main.c	\
 		src/inhibitor/command_in_array.c	\
 		src/inhibitor/no_inhibitor.c		\
 		src/inhibitor/delete_line_array.c	\
+		src/job_control/add_bg_process.c		\
+		src/job_control/delete_bg_process.c 	\
+		src/job_control/len_bg_process.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -46,6 +46,7 @@ typedef struct s_info
     int status;
     pid_t child_pid;
     pid_t gr_pid;
+    pid_t *all_bg_process;
     int fd[2];
     int fdd;
     int fd_read;
@@ -61,6 +62,7 @@ typedef struct s_list
 
 typedef struct s_command
 {
+    bool bg_process;
     char *command;
     char *separator;
     char **tab_command;
@@ -209,5 +211,10 @@ char **command_in_array(char *str, char *sep);
 char *delete_one_chara(char *str, int pos);
 bool no_inhibitor(char *str, int i);
 char **delete_line_array(char **arr, int i);
+
+/* JOB_CONTROL */
+pid_t *add_bg_process(pid_t *, pid_t);
+int len_bg_process(pid_t *);
+pid_t *delete_bg_process(pid_t *, pid_t);
 
 #endif
