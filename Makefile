@@ -14,7 +14,10 @@ SRC	=	src/main.c	\
 		src/alias/init_aliases_list.c	\
 		src/alias/add_list_on_alias.c	\
 		src/alias/split_file.c		\
-		src/alias/manage_42rc.c		\
+		src/alias/_42rc.c		\
+		src/alias/fill_42rc_since_file.c	\
+		src/alias/remplace_tab_command.c	\
+		src/alias/verify_file.c		\
 		src/builtin/builtin_redirections/builtin_redirection.c	\
 		src/builtin/builtin_redirections/double_right_builtin_redirection.c	\
 		src/builtin/builtin_redirections/pip_builtin_redirection.c	\

@@ -7,6 +7,14 @@
 
 #include "shell.h"
 
+void display_alias(aliase_t *alias)
+{
+    for (;alias->prev; alias = alias->prev);
+    for (;alias; alias = alias->next) {
+        printf("%s %s\n", alias->new_name, alias->command);
+    }
+}
+
 char *split_alias_name(char *all, int *i)
 {
     char *tmp = NULL;

@@ -7,21 +7,20 @@
 
 #include "shell.h"
 
-bool ignore_same_alias(aliase_t *aliase, char *new_name, char *command)
+bool ignore_same_alias(aliase_t *aliase, char *new_name)
 {
     aliase_t *alias = aliase;
 
     for (; alias->prev != NULL; alias = alias->prev);
     for (; alias != NULL; alias = alias->next)
-        if (my_strcmp(alias->new_name, new_name) == 0 || \
-            my_strcmp(alias->command, command) == 0)
+        if (my_strcmp(alias->new_name, new_name) == 0)
             return true;
     return false;
 }
 
 aliase_t *add_alias_in_list(char *new_name, char *command, aliase_t *alias)
 {
-    if (ignore_same_alias(alias, new_name, command) == true)
+    if (ignore_same_alias(alias, new_name) == true)
         return alias;
     for (; alias->next != NULL; alias = alias->next);
     if ((alias->next = malloc(sizeof(aliase_t))) == NULL)
