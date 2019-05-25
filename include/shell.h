@@ -55,6 +55,7 @@ typedef struct s_info
     int status;
     pid_t child_pid;
     pid_t gr_pid;
+    pid_t *all_bg_process;
     int fd[2];
     int fdd;
     int fd_read;
@@ -70,6 +71,7 @@ typedef struct s_list
 
 typedef struct s_command
 {
+    bool bg_process;
     char *command;
     char *separator;
     char **tab_command;
@@ -134,6 +136,10 @@ int delete_all_quotation_set(t_command *);
 int set_variable(t_info *, t_command *, int);
 /* MY_UNSET */
 int my_unset(t_info *, t_command *);
+/* MY_ECHO */
+int my_echo(t_info *, t_command *);
+void write_with_enable_false(char *, char);
+void write_with_enable_true(char *, int *, char *);
 
 /* FORK */
 pid_t create_process(void);
@@ -165,8 +171,11 @@ void free_variable(t_variable *);
 
 /* HISTORY */
 int add_in_history(char *command_line);
+char *check_point_history(char *command_line);
+int find_point_history(char *command);
 int history(t_info *shell, t_command *command);
 int open_file_history(void);
+char *recup_last_command(void);
 char *recup_path_history(void);
 
 /* SH */
@@ -222,11 +231,19 @@ int parse_command(t_command *, t_info *);
 char **get_value_name(t_info *, char *);
 int change_tab_command(t_command *, char **, int, int);
 bool is_alphanumeric(char);
+char **get_value_special_variable(t_info *, char *);
+char **get_value_in_env(t_info *shell, char *name);
+char *get_name_variable(t_command *cmd, int i, int a);
 
 /* INHIBITOR */
 char **command_in_array(char *str, char *sep);
 char *delete_one_chara(char *str, int pos);
 bool no_inhibitor(char *str, int i);
 char **delete_line_array(char **arr, int i);
+
+/* JOB_CONTROL */
+pid_t *add_bg_process(pid_t *, pid_t);
+int len_bg_process(pid_t *);
+pid_t *delete_bg_process(pid_t *, pid_t);
 
 #endif

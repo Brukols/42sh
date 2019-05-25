@@ -18,6 +18,7 @@ void test_segfault(t_info *shell, char *error)
 int wait_end_all_exec(t_info *shell)
 {
     int exit_status = 0;
+
     while (wait(&shell->status) != -1) {
         if (WIFSIGNALED(shell->status)) {
             if (WTERMSIG(shell->status) == SIGSEGV)

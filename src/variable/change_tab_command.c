@@ -43,9 +43,18 @@ int delete_the_name(t_command *cmd, int i, int a)
 
 int change_tab_command(t_command *cmd, char **value, int i, int a)
 {
+    char *name = get_name_variable(cmd, i, a);
+
+    if (!name)
+        return (EXIT_FAILURE);
     if (delete_the_name(cmd, i, a) == EXIT_FAILURE)
         return (EXIT_FAILURE);
     if (remplace_the_name(cmd, value, i) == EXIT_FAILURE)
         return (EXIT_FAILURE);
-    return (EXIT_SUCCESS);
+    if (strcmp(name, "term") == 0 || strcmp(name, "cwd") == 0)
+        free_array(value);
+    free(name);
+    if (my_strlen(cmd->tab_command[0]) == 0)
+        return (EXIT_SUCCESS);
+    return (VARIABLE);
 }

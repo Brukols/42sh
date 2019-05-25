@@ -52,6 +52,7 @@ int variable_does_not_exist(char *name)
 
 int remplace_variable(t_command *cmd, t_info *shell, int i, int a)
 {
+    int verif;
     char *name = get_name_variable(cmd, i, a);
     char **value;
 
@@ -63,8 +64,7 @@ int remplace_variable(t_command *cmd, t_info *shell, int i, int a)
     }
     if (!(value = get_value_name(shell, name)))
         return (variable_does_not_exist(name));
-    if (change_tab_command(cmd, value, i, a) == FAILURE)
-        return (EXIT_FAILURE);
+    verif = change_tab_command(cmd, value, i, a);
     free(name);
-    return (VARIABLE);
+    return (verif);
 }

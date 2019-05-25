@@ -23,6 +23,8 @@ SRC	=	src/main.c	\
 		src/builtin/builtin_redirections/pip_builtin_redirection.c	\
 		src/builtin/builtin_redirections/right_builtin_redirection.c	\
 		src/builtin/builtin_redirections/left_builtin_redirection.c	\
+		src/builtin/echo/my_echo.c	\
+		src/builtin/echo/write_echo.c	\
 		src/builtin/env/my_env/my_env.c	\
 		src/builtin/env/my_setenv/add_venv.c	\
 		src/builtin/env/my_setenv/create_venv.c	\
@@ -61,8 +63,11 @@ SRC	=	src/main.c	\
 		src/fork/child/get_right_path.c	\
 		src/fork/wait_child/wait_end_all_exec.c	\
 		src/history/add_in_history.c	\
+		src/history/check_point_history.c	\
+		src/history/find_point_history.c	\
 		src/history/history.c	\
 		src/history/open_file_history.c	\
+		src/history/recup_last_command.c	\
 		src/history/recup_path_history.c	\
 		src/free/delete_all.c	\
 		src/free/delete_builtin.c	\
@@ -99,9 +104,13 @@ SRC	=	src/main.c	\
 		src/variable/get_value_name.c		\
 		src/variable/remplace_the_name.c	\
 		src/variable/remplace_variable.c	\
+		src/variable/get_value_special_variable.c	\
 		src/inhibitor/command_in_array.c	\
 		src/inhibitor/no_inhibitor.c		\
 		src/inhibitor/delete_line_array.c	\
+		src/job_control/add_bg_process.c		\
+		src/job_control/delete_bg_process.c 	\
+		src/job_control/len_bg_process.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -58,10 +58,24 @@ char **get_value_in_env(t_info *shell, char *name)
     return (NULL);
 }
 
+bool is_special_variable(char *name)
+{
+    char *all_name[] = {"term", "cwd", NULL};
+
+    for (int i = 0; all_name[i]; i++) {
+        if (strcmp(name, all_name[i]) == 0) {
+            return (true);
+        }
+    }
+    return (false);
+}
+
 char **get_value_name(t_info *shell, char *name)
 {
     t_variable *var = shell->variable;
 
+    if (is_special_variable(name) == true)
+        return (get_value_special_variable(shell, name));
     for (; var; var = var->next) {
         if (strcmp(var->name, name) == 0)
             return (var->arg);
