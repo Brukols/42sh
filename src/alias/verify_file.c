@@ -13,7 +13,7 @@ FILE *_42rc_is_filled(void)
     int first_char = 0;
     int fd = 0;
 
-    if ((fd = open(".42rc", O_RDONLY | O_APPEND | O_CREAT, S_IRWXU \
+    if ((fd = open(".alias", O_RDONLY | O_APPEND | O_CREAT, S_IRWXU \
 | S_IRWXG | S_IRWXO)) == -1)
         exit(84);
     stream = fdopen(fd, "r");
