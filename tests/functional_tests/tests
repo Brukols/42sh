@@ -787,4 +787,5 @@ TESTS=
   echo 'which history'
   echo 'which repeat'
   echo 'which cd'
+  echo 'which env'
 [730-END]
