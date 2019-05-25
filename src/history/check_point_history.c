@@ -29,7 +29,6 @@ char *transform_point_in_command(char *command_line, int pos)
     char *end;
     char *beg;
     char *command;
-
     if (history == NULL)
         return (NULL);
     beg = strndup(command_line, pos);
