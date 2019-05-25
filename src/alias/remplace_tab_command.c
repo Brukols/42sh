@@ -32,22 +32,6 @@ char **remplace_with_alias(aliase_t *alias, char **tab_command, int i)
     return tmp;
 }
 
-char **new_line_command(int i, aliase_t *alias, char **tab_command)
-{
-    for (; alias->prev; alias = alias->prev);
-    for (; alias->next; alias = alias->next) {
-        if (my_strcmp(alias->new_name, tab_command[i]) == 0) {
-            tab_command = remplace_with_alias(alias, tab_command, i);
-            return tab_command;
-        }
-    }
-    if (my_strcmp(alias->new_name, tab_command[i]) == 0) {
-        tab_command = remplace_with_alias(alias, tab_command, i);
-        return tab_command;
-    }
-    return tab_command;
-}
-
 t_command *change_command_line(t_info *shell, t_command *command)
 {
     for (int i = 0; command->tab_command[i]; i++) {

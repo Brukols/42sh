@@ -16,6 +16,7 @@ SRC	=	src/main.c	\
 		src/alias/split_file.c		\
 		src/alias/create_alias_file.c		\
 		src/alias/fill_42rc_since_file.c	\
+		src/alias/command_alias.c	\
 		src/alias/remplace_tab_command.c	\
 		src/alias/verify_file.c		\
 		src/builtin/builtin_redirections/builtin_redirection.c	\

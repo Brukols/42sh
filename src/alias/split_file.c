@@ -10,6 +10,7 @@
 void display_alias(aliase_t *alias)
 {
     for (;alias->prev; alias = alias->prev);
+    alias = alias->next;
     for (;alias; alias = alias->next) {
         printf("%s %s\n", alias->new_name, alias->command);
     }

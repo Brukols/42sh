@@ -15,9 +15,9 @@ aliase_t *init_aliases(void)
     if (aliases == NULL)
         return NULL;
     aliases->prev = NULL;
-    if ((aliases->new_name = my_strdup("azsdzeds")) == NULL)
+    if ((aliases->new_name = my_strdup("vi")) == NULL)
         return NULL;
-    if ((aliases->command = my_strdup("azsdqdsqq\n")) == NULL)
+    if ((aliases->command = my_strdup("vim")) == NULL)
         return NULL;
     aliases->next = NULL;
     if ((file = _42rc_is_filled()) == NULL)
