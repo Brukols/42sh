@@ -15,7 +15,7 @@ int verif_point_beg(char *command, int i)
         if (command[i + 1] != '!')
             return (-1);
         if (command[i + 2] != '\0' && command[i + 2] != '\t'
-        && command[i + 2] != ' ')
+            && command[i + 2] != ' ')
             return (-1);
         return (0);
     }
@@ -30,7 +30,7 @@ int verif_point(char *command, int i)
         if (command[i + 1] != '!')
             return (-1);
         if (command[i + 2] != '\0' && command[i + 2] != '\t'
-        && command[i + 2] != ' ')
+            && command[i + 2] != ' ')
             return (-1);
         if (command[i - 1] != '\t' && command[i - 1] != ' ')
             return (-1);

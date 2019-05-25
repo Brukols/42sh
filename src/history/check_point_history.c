@@ -15,8 +15,7 @@ char *stock_next(char *command_line, int pos)
 
     if (tmp == NULL)
         return (NULL);
-    for (i = pos + 2; command_line[i] != '\0' || command_line[i] != '\n'
-    ; i++) {
+    for (i = pos + 2; command_line[i] != '\0' || command_line[i] != '\n'; i++) {
         tmp[j] = command_line[i];
         j++;
     }
@@ -36,7 +35,7 @@ char *transform_point_in_command(char *command_line, int pos)
     beg = strndup(command_line, pos);
     end = strdup(&command_line[pos + 2]);
     if ((command = malloc(sizeof(char) * (strlen(beg) + strlen(end) +
-    strlen(history) + 1))) == NULL)
+        strlen(history) + 1))) == NULL)
         return (NULL);
     command[0] = '\0';
     strcat(command, beg);
