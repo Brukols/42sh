@@ -192,6 +192,7 @@ t_list *create_tab_command(t_list *list);
 int is_skip_command(t_command *command);
 char **apply_globbings(char **tab_command);
 int command_double_sep(t_command *command, t_info *shell);
+void manage_quotation_command_list(char *, int *, int *);
 /* SIGNAL */
 int prepare_signal(void);
 void sigint_handler(int sig);

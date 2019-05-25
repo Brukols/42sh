@@ -9,11 +9,11 @@
 
 t_list *command_to_list_double_sep(char *str, char *sep)
 {
-    int len_word = 0;
     t_list *list = NULL;
     if ((list = create_list()) == NULL)
         return (NULL);
-    for (int i = 0; i < my_strlen(str); i++) {
+    for (int i = 0, len_word = 0; i < my_strlen(str); i++) {
+        manage_quotation_command_list(str, &i, &len_word);
         if (!check_sep_double(str, i, sep))
             len_word++;
         if (!check_sep_double(str, i, sep)
