@@ -16,6 +16,26 @@ bool is_a_separator(char c, char *sep)
     return (false);
 }
 
+char *fill_cmd(char *str, int *i, char *cmd, int *a)
+{
+    char quote;
+
+    if (str[*i] != '"' && str[*i] != '\'') {
+        cmd[*a] = str[*i];
+        return (cmd);
+    }
+    quote = str[*i];
+    (*i)++;
+    for (; str[*i] && str[*i] != quote; (*i)++, (*a)++)
+        cmd[*a] = str[*i];
+    *a -= 1;
+    if (!str[*i]) {
+        *i -= 1;
+        *a -= 1;
+    }
+    return (cmd);
+}
+
 char *fill_next_cmd(char *str, int *i, char *sep)
 {
     int a = 0;
@@ -35,7 +55,7 @@ char *fill_next_cmd(char *str, int *i, char *sep)
             cmd[a] = str[*i];
             continue;
         }
-        cmd[a] = str[*i];
+        cmd = fill_cmd(str, i, cmd, &a);
     }
     cmd[a] = '\0';
     return (cmd);

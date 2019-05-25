@@ -7,23 +7,50 @@
 
 #include "shell.h"
 
+bool write_special_chara_next(char *str, int *i)
+{
+    switch (str[*i]) {
+    case 'n':
+        my_putchar('\n');
+        break;
+    case 'r':
+        my_putchar('\r');
+        break;
+    case 't':
+        my_putchar('\t');
+        break;
+    case 'v':
+        my_putchar('\v');
+        break;
+    default:
+        *i -= 1;
+        return (false);
+    }
+    return (true);
+}
+
 bool write_special_chara(char *str, int *i)
 {
-    char value[3];
-    char *all_value = "\\abcefnrtv";
-
-    (*i)++;
-    value[0] = '\\';
-    value[2] = '\0';
-    for (int a = 0; all_value[a]; a++) {
-        if (all_value[a] == str[*i]) {
-            value[1] = all_value[a];
-            my_putstr(value);
-            return (true);
-        }
+    switch (str[*i]) {
+    case '\\':
+        my_putchar('\\');
+        break;
+    case 'a':
+        my_putchar('\a');
+        break;
+    case 'b':
+        my_putchar('\b');
+        break;
+    case 'e':
+        my_putchar('\e');
+        break;
+    case 'f':
+        my_putchar('\f');
+        break;
+    default:
+        return (write_special_chara_next(str, i));
     }
-    (*i)--;
-    return (false);
+    return (true);
 }
 
 void write_with_enable_true(char *quote, int *i, char *str)
@@ -37,6 +64,7 @@ void write_with_enable_true(char *quote, int *i, char *str)
         return;
     }
     if (str[*i] == '\\') {
+        *i += 1;
         if (write_special_chara(str, i) == true)
             return;
     }
