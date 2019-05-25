@@ -127,6 +127,10 @@ int delete_all_quotation_set(t_command *);
 int set_variable(t_info *, t_command *, int);
 /* MY_UNSET */
 int my_unset(t_info *, t_command *);
+/* MY_ECHO */
+int my_echo(t_info *, t_command *);
+void write_with_enable_false(char *, char);
+void write_with_enable_true(char *, int *, char *);
 
 /* FORK */
 pid_t create_process(void);

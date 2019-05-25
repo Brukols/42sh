@@ -16,6 +16,8 @@ SRC	=	src/main.c	\
 		src/builtin/builtin_redirections/pip_builtin_redirection.c	\
 		src/builtin/builtin_redirections/right_builtin_redirection.c	\
 		src/builtin/builtin_redirections/left_builtin_redirection.c	\
+		src/builtin/echo/my_echo.c	\
+		src/builtin/echo/write_echo.c	\
 		src/builtin/env/my_env/my_env.c	\
 		src/builtin/env/my_setenv/add_venv.c	\
 		src/builtin/env/my_setenv/create_venv.c	\
