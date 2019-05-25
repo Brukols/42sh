@@ -58,7 +58,7 @@ int my_echo(__attribute__((unused)) t_info *shell, t_command *cmd)
     check_arg(cmd->tab_command, &new_line, &enable_bs, &i);
     for (; cmd->tab_command[i]; i++) {
         write_cmd(cmd->tab_command[i], enable_bs, &quote);
-        if (cmd->tab_command[i])
+        if (cmd->tab_command[i + 1])
             my_putchar(' ');
     }
     if (new_line == true)
