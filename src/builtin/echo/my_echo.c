@@ -7,57 +7,55 @@
 
 #include "shell.h"
 
-bool good_flags(char *str)
+bool write_special_chara(char *str, int *i)
 {
-    if (str[0] != '-')
-        return (false);
-    for (int i = 1; str[i]; i++) {
-        if (str[i] != 'n' && str[i] != 'e' && str[i] != 'E')
-            return (false);
+    char value[3];
+    char *all_value = "\\abcefnrtv";
+
+    (*i)++;
+    value[0] = '\\';
+    value[2] = '\0';
+    for (int a = 0; all_value[a]; a++) {
+        if (all_value[a] == str[*i]) {
+            value[1] = all_value[a];
+            my_putstr(value);
+            return (true);
+        }
     }
-    return (true);
+    (*i)--;
+    return (false);
 }
 
-void change_flags(char *str, bool *new_line, bool *enable_bs)
+void write_with_enable_true(char *quote, int *i, char *str)
 {
-    for (int i = 1; str[i]; i++) {
-        if (str[i] == 'n')
-            (*new_line) = false;
-        if (str[i] == 'e')
-            (*enable_bs) = true;
-        if (str[i] == 'E')
-            (*enable_bs) = false;
+    if ((*quote) == 0 && (str[*i] == '"' || str[*i] == '\'')) {
+        (*quote) = str[*i];
+        return;
     }
-}
-
-void check_arg(char **cmd, bool *new_line, bool *enable_bs, int *i)
-{
-    for (; cmd[*i] && good_flags(cmd[*i]) == true; (*i)++)
-        change_flags(cmd[*i], new_line, enable_bs);
-}
-
-void write_cmd(char *cmd, bool enable_bs, char *quote)
-{
-    int i = 0;
-
-    for (; cmd[i]; i++) {
-        if (enable_bs == true)
-            write_with_enable_true(quote, &i, cmd);
-        else
-            write_with_enable_false(quote, cmd[i]);
+    if (str[*i] == (*quote)) {
+        (*quote) = 0;
+        return;
     }
+    if (str[*i] == '\\') {
+        if (write_special_chara(str, i) == true)
+            return;
+    }
+    my_putchar(str[*i]);
 }
 
 int my_echo(__attribute__((unused)) t_info *shell, t_command *cmd)
 {
     bool new_line = true;
-    bool enable_bs = false;
     int i = 1;
     char quote = 0;
 
-    check_arg(cmd->tab_command, &new_line, &enable_bs, &i);
+    if (cmd->tab_command[1] && strcmp(cmd->tab_command[1], "-n") == 0) {
+        new_line = false;
+        i++;
+    }
     for (; cmd->tab_command[i]; i++) {
-        write_cmd(cmd->tab_command[i], enable_bs, &quote);
+        for (int a = 0; cmd->tab_command[i][a]; a++)
+            write_with_enable_true(&quote, &a, cmd->tab_command[i]);
         if (cmd->tab_command[i + 1])
             my_putchar(' ');
     }
