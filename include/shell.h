@@ -156,8 +156,11 @@ void free_variable(t_variable *);
 
 /* HISTORY */
 int add_in_history(char *command_line);
+char *check_point_history(char *command_line);
+int find_point_history(char *command);
 int history(t_info *shell, t_command *command);
 int open_file_history(void);
+char *recup_last_command(void);
 char *recup_path_history(void);
 
 /* SH */
