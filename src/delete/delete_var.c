@@ -7,7 +7,7 @@
 
 #include "shell.h"
 
-void free_variable(t_variable *var)
+void delete_var(t_variable *var)
 {
     t_variable *tmp;
 

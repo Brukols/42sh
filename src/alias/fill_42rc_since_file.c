@@ -11,13 +11,19 @@ bool bad_alias_line(char *alias)
 {
     char **array_alias = my_str_to_word_array(alias, ' ');
 
-    if (array_alias == NULL)
+    if (array_alias == NULL) {
+        free_array(array_alias);
         exit(84);
-    if (my_arraylen(array_alias) < 3)
+    }
+    if (my_arraylen(array_alias) < 3) {
+        free_array(array_alias);
         return true;
-    if (my_strcmp(array_alias[0], "alias") != 0 && \
-        my_strcmp(array_alias[0], "lias") != 0)
+    }
+    if (my_strcmp(array_alias[0], "alias") != 0
+    && my_strcmp(array_alias[0], "lias") != 0) {
+        free_array(array_alias);
         return true;
+    }
     free_array(array_alias);
     return false;
 }

@@ -22,6 +22,7 @@ FILE *_42rc_is_filled(void)
     first_char = fgetc(stream);
     if (first_char == EOF) {
         close(fd);
+        fclose(stream);
         return NULL;
     }
     close(fd);
