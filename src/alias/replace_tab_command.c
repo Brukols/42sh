@@ -7,7 +7,7 @@
 
 #include "shell.h"
 
-char **remplace_with_alias(aliase_t *alias, char **tab_command, int i)
+char **replace_with_alias(aliase_t *alias, char **tab_command, int i)
 {
     char **alias_command = my_str_to_word_array(alias->command, ' ');
     char **tmp = malloc(sizeof(char *) * (my_arraylen(tab_command)      \

@@ -209,7 +209,7 @@ t_command *alias(t_command *command, t_info *shell);
 t_command *change_command_line(t_info *shell, t_command *command);
 aliase_t *add_command_alias(t_command *command, t_info *shell, bool *);
 char **new_line_command(int i, aliase_t *alias, char **tab_command);
-char **remplace_with_alias(aliase_t *alias, char **tab_command, int i);
+char **replace_with_alias(aliase_t *alias, char **tab_command, int i);
 void display_alias(aliase_t *);
 char *recup_path_alias(void);
 
@@ -228,8 +228,8 @@ t_command *get_separator_double(t_command *command, char *str,
 char *sep, int i);
 /* VARIABLE */
 int local_and_env_variable(t_command *, t_info *);
-int remplace_variable(t_command *, t_info *, int, int);
-int remplace_the_name(t_command *, char **, int);
+int replace_variable(t_command *, t_info *, int, int);
+int replace_the_name(t_command *, char **, int);
 int parse_command(t_command *, t_info *);
 char **get_value_name(t_info *, char *);
 int change_tab_command(t_command *, char **, int, int);

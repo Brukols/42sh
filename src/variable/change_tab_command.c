@@ -49,7 +49,7 @@ int change_tab_command(t_command *cmd, char **value, int i, int a)
         return (EXIT_FAILURE);
     if (delete_the_name(cmd, i, a) == EXIT_FAILURE)
         return (EXIT_FAILURE);
-    if (remplace_the_name(cmd, value, i) == EXIT_FAILURE)
+    if (replace_the_name(cmd, value, i) == EXIT_FAILURE)
         return (EXIT_FAILURE);
     if (strcmp(name, "term") == 0 || strcmp(name, "cwd") == 0)
         free_array(value);

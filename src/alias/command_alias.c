@@ -12,12 +12,12 @@ char **new_line_command(int i, aliase_t *alias, char **tab_command)
     for (; alias->prev; alias = alias->prev);
     for (; alias->next; alias = alias->next) {
         if (my_strcmp(alias->new_name, tab_command[i]) == 0) {
-            tab_command = remplace_with_alias(alias, tab_command, i);
+            tab_command = replace_with_alias(alias, tab_command, i);
             return tab_command;
         }
     }
     if (my_strcmp(alias->new_name, tab_command[i]) == 0) {
-        tab_command = remplace_with_alias(alias, tab_command, i);
+        tab_command = replace_with_alias(alias, tab_command, i);
         return tab_command;
     }
     return tab_command;

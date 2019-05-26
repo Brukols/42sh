@@ -31,7 +31,7 @@ int change_if_variable(t_command *cmd, t_info *shell, int i)
             break;
         if (cmd->tab_command[i][a] != '$')
             continue;
-        verif = remplace_variable(cmd, shell, i, a);
+        verif = replace_variable(cmd, shell, i, a);
         if (verif == EXIT_FAILURE)
             return (EXIT_FAILURE);
         if (verif == EXIT_SUCCESS)

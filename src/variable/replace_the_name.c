@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** 42SH
 ** File description:
-** remplace the name
+** replace the name
 */
 
 #include "shell.h"
@@ -67,7 +67,7 @@ char **add_a_line(char **arr, char *value, int i)
     return (arr);
 }
 
-int remplace_the_name(t_command *cmd, char **value, int i)
+int replace_the_name(t_command *cmd, char **value, int i)
 {
     if (!value[0])
         return (EXIT_SUCCESS);

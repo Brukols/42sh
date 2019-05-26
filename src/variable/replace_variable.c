@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** 42SH
 ** File description:
-** remplace variable
+** replace variable
 */
 
 #include "shell.h"
@@ -50,7 +50,7 @@ int variable_does_not_exist(char *name)
     return (EXIT_SUCCESS);
 }
 
-int remplace_variable(t_command *cmd, t_info *shell, int i, int a)
+int replace_variable(t_command *cmd, t_info *shell, int i, int a)
 {
     int verif;
     char *name = get_name_variable(cmd, i, a);

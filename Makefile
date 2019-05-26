@@ -17,7 +17,7 @@ SRC	=	src/main.c	\
 		src/alias/create_alias_file.c		\
 		src/alias/fill_42rc_since_file.c	\
 		src/alias/command_alias.c	\
-		src/alias/remplace_tab_command.c	\
+		src/alias/replace_tab_command.c	\
 		src/alias/recup_path_alias.c	\
 		src/alias/verify_file.c		\
 		src/builtin/builtin_redirections/builtin_redirection.c	\
@@ -105,8 +105,8 @@ SRC	=	src/main.c	\
 		src/variable/local_and_env_variable.c	\
 		src/variable/change_tab_command.c	\
 		src/variable/get_value_name.c		\
-		src/variable/remplace_the_name.c	\
-		src/variable/remplace_variable.c	\
+		src/variable/replace_the_name.c	\
+		src/variable/replace_variable.c	\
 		src/variable/get_value_special_variable.c	\
 		src/inhibitor/command_in_array.c	\
 		src/inhibitor/no_inhibitor.c		\
