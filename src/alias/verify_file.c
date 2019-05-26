@@ -26,8 +26,10 @@ FILE *_42rc_is_filled(void)
     if (first_char == EOF) {
         close(fd);
         fclose(stream);
+        free(path);
         return NULL;
     }
+    free(path);
     close(fd);
     return stream;
 }
