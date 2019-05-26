@@ -30,5 +30,6 @@ aliase_t *add_alias_in_list(char *new_name, char *command, aliase_t *alias)
     if ((alias->next->command = my_strdup(command)) == NULL)
         return NULL;
     alias->next->next = NULL;
+    alias->next->prev = alias;
     return alias;
 }
