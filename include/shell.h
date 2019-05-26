@@ -29,11 +29,6 @@ typedef struct s_variable
     struct s_variable *prev;
 } t_variable;
 
-#define NO_GLOBBINGS -1
-#define EXIT_ERROR 84
-#define RETURN_FAILURE -1
-#define RETURN_SUCCESS 0
-
 typedef struct aliase_s
 {
     char *new_name;
@@ -105,6 +100,8 @@ int error_where(t_command *command);
 int search_where(t_command *command, char **path_tab,
 char *right_path, t_builtin **builtin);
 int my_where(t_info *shell, t_command *command);
+/* EXIT */
+int my_exit(t_info *shell, t_command *command);
 /*ENV*/
 int my_env(t_info *shell, t_command *command);
 /*CD*/
@@ -201,8 +198,8 @@ void sigint_handler(int sig);
 aliase_t *init_aliases(void);
 FILE *_42rc_is_filled(void);
 aliase_t *fill_42rc_since_file(aliase_t *alias, FILE *file);
-int split_alias_name_and_value(char *full_alias, \
-                               char separator, aliase_t *alias, int *i);
+int split_alias_name_and_value(char *full_alias,
+char separator, aliase_t *alias, int *i);
 bool bad_alias_line(char *alias);
 aliase_t *add_alias_in_list(char *new_name, char *command, aliase_t *alias);
 char *split_alias_value(char *all, int i);

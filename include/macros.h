@@ -16,5 +16,9 @@
 #define UNDEFINED_VARIABLE 3
 #define UNMATCHED_QUOTE 2
 #define NOT_ALPHA_NUMERIC 2
+#define NO_GLOBBINGS -1
+#define EXIT_ERROR 84
+#define RETURN_FAILURE -1
+#define RETURN_SUCCESS 0
 
 #endif

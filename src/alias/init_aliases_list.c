@@ -21,7 +21,7 @@ aliase_t *init_aliases(void)
         return NULL;
     aliases->next = NULL;
     if ((file = _42rc_is_filled()) == NULL)
-            return aliases;
+        return aliases;
     if ((aliases = fill_42rc_since_file(aliases, file)) == NULL)
         return NULL;
     fclose(file);

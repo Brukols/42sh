@@ -38,6 +38,7 @@ SRC	=	src/main.c	\
 		src/sh/command/globbings.c	\
 		src/builtin/env/repair_env.c	\
 		src/builtin/env/search_env.c	\
+		src/builtin/exit/exit.c	\
 		src/builtin/my_cd/change_dir.c	\
 		src/builtin/my_cd/change_old_dir.c	\
 		src/builtin/my_cd/exec_cd.c	\

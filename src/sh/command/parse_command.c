@@ -30,11 +30,6 @@ int parse_command(t_command *command, t_info *shell)
     int options = 0;
     if (command->tab_command[0] == NULL)
         return (RETURN_SUCCESS);
-    if (my_strcmp(command->tab_command[0], "exit") == 0
-    && my_strlen(command->tab_command[0]) == 4) {
-        shell->exit = 1;
-        return (RETURN_SUCCESS);
-    }
     if ((options = options_command(command, shell)) == EXIT_ERROR)
         return EXIT_ERROR;
     if (options == RETURN_SUCCESS)
