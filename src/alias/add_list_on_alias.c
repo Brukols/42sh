@@ -21,7 +21,7 @@ bool ignore_same_alias(aliase_t *aliase, char *new_name)
 aliase_t *add_alias_in_list(char *new_name, char *command, aliase_t *alias)
 {
     if (ignore_same_alias(alias, new_name) == true)
-      return alias;
+        return alias;
     for (; alias->next != NULL; alias = alias->next);
     if ((alias->next = malloc(sizeof(aliase_t))) == NULL)
         return NULL;

@@ -13,6 +13,7 @@ void delete_aliases(aliase_t *aliases)
 
     if (!aliases)
         return;
+    for (; aliases->prev; aliases = aliases->prev);
     while (aliases) {
         tmp = aliases;
         if (aliases->new_name)

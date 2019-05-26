@@ -16,7 +16,7 @@ void display_alias(aliase_t *alias)
         printf("%s %s\n", alias->new_name, alias->command);
     }
     if (my_strcmp(alias->new_name, "vi") != 0)
-           printf("%s %s\n", alias->new_name, alias->command);
+        printf("%s %s\n", alias->new_name, alias->command);
     fflush(stdout);
     for (; alias->prev; alias = alias->prev);
 }

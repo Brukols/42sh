@@ -69,8 +69,8 @@ bool show_one_alias(char **tab_command, t_info *shell)
         }
     }
     if (my_strcmp(tab_command[1], alias->new_name) == 0) {
-            my_putstr(alias->command);
-            return true;
+        my_putstr(alias->command);
+        return true;
     }
     return false;
 }
