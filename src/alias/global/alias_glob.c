@@ -11,7 +11,7 @@ t_command *global_alias(t_command *command, t_info *shell)
 {
     FILE *file = NULL;
 
-    if ((file = _alias_is_filled()) == NULL)
+    if ((file = alias_is_filled()) == NULL)
         return command;
     if ((shell->aliases = fill_alias_since_file(shell->aliases, file)) == NULL)
         return NULL;

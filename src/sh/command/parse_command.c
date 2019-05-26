@@ -17,7 +17,7 @@ int options_command(t_command *command, t_info *shell)
     if ((shell->aliases = local_alias(command, shell, &alias)) == NULL)
         return EXIT_ERROR;
     if ((shell->aliases = unalias(command, shell, &alias)) == NULL)
-      return EXIT_ERROR;
+        return EXIT_ERROR;
     if (alias == true)
         return RETURN_SUCCESS;
     if ((command = change_command_line(shell, command)) == NULL)

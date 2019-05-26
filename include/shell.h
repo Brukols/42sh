@@ -197,7 +197,7 @@ void sigint_handler(int sig);
 
 /* ALIAS */
 aliase_t *init_aliases(void);
-FILE *_alias_is_filled(void);
+FILE *alias_is_filled(void);
 aliase_t *fill_alias_since_file(aliase_t *alias, FILE *file);
 int split_alias_name_and_value(char *full_alias, \
 char separator, aliase_t *alias, int *i);
