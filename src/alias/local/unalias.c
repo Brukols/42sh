@@ -18,17 +18,15 @@ bool unalias_command(t_command *command)
 
 aliase_t *delete_alias(aliase_t *alias)
 {
-    aliase_t *tmp = alias->next;
-
-    if (tmp->next == NULL) {
+    if (alias->next->next == NULL) {
+        free(alias->next->new_name);
+        free(alias->next->command);
+        free(alias->next);
         alias->next = NULL;
-        free(tmp->new_name);
-        free(tmp->command);
-        free(tmp);
         return alias;
     }
-    alias->next = tmp->next;
-    tmp->next->prev = alias;
+    alias->next = alias->next->next;
+    alias->next->next->prev = alias;
     return alias;
 }
 
