@@ -78,7 +78,6 @@ bool show_one_alias(char **tab_command, t_info *shell)
 aliase_t *add_command_alias(t_command *command, t_info *shell, bool *change)
 {
     char *new_command = NULL;
-
     if (bad_new_alias_line(command->tab_command) == false) {
         (*change) = true;
         display_alias(shell->aliases);
@@ -90,15 +89,11 @@ aliase_t *add_command_alias(t_command *command, t_info *shell, bool *change)
     }
     if (bad_alias_line(shell->command_line) == false) {
         (*change) = true;
-        if ((new_command = init_new_command(command->tab_command)) == NULL) {
-            delete_all(shell);
+        if ((new_command = init_new_command(command->tab_command)) == NULL)
             exit(84);
-        }
         if ((shell->aliases = add_alias_in_list(command->tab_command[1], \
-new_command, shell->aliases)) == NULL) {
-            delete_all(shell);
+new_command, shell->aliases)) == NULL)
             exit(84);
-        }
     }
     free(new_command);
     return shell->aliases;
