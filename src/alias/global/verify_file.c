@@ -13,6 +13,7 @@ FILE *_42rc_is_filled(void)
     int first_char = 0;
     int fd = 0;
     char *path = recup_path_alias();
+
     if (path == NULL) return NULL;
     if ((fd = open(path, O_RDONLY | O_APPEND | O_CREAT, S_IRWXU \
 | S_IRWXG | S_IRWXO)) == -1) exit(84);

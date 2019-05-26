@@ -7,7 +7,7 @@
 
 #include "shell.h"
 
-t_command *alias(t_command *command, t_info *shell)
+t_command *global_alias(t_command *command, t_info *shell)
 {
     FILE *file = NULL;
 

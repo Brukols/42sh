@@ -199,19 +199,20 @@ void sigint_handler(int sig);
 aliase_t *init_aliases(void);
 FILE *_42rc_is_filled(void);
 aliase_t *fill_42rc_since_file(aliase_t *alias, FILE *file);
-int split_alias_name_and_value(char *full_alias,
+int split_alias_name_and_value(char *full_alias, \
 char separator, aliase_t *alias, int *i);
 bool bad_alias_line(char *alias);
 aliase_t *add_alias_in_list(char *new_name, char *command, aliase_t *alias);
 char *split_alias_value(char *all, int i);
 char *split_alias_name(char *all, int *i);
-t_command *alias(t_command *command, t_info *);
+t_command *global_alias(t_command *command, t_info *);
 t_command *change_command_line(t_info *shell, t_command *command);
-aliase_t *add_command_alias(t_command *command, t_info *shell, bool *);
+aliase_t *local_alias(t_command *command, t_info *shell, bool *);
 char **new_line_command(int i, aliase_t *alias, char **tab_command);
 char **replace_with_alias(aliase_t *alias, char **tab_command, int i);
 void display_alias(aliase_t *);
 char *recup_path_alias(void);
+bool show_one_alias(char **tab_command, t_info *shell);
 
 /* LIST */
 t_list *create_list(void);

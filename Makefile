@@ -11,15 +11,17 @@ SRC	=	src/main.c	\
 		src/builtin/init_builtin.c	\
 		src/builtin/is_builtin.c	\
 		src/builtin/do_builtin.c	\
-		src/alias/init_aliases_list.c	\
 		src/alias/add_list_on_alias.c	\
-		src/alias/split_file.c		\
-		src/alias/create_alias_file.c		\
-		src/alias/fill_42rc_since_file.c	\
-		src/alias/command_alias.c	\
-		src/alias/replace_tab_command.c	\
-		src/alias/recup_path_alias.c	\
-		src/alias/verify_file.c		\
+		src/alias/display_list.c		\
+		src/alias/remplace_user_line.c	\
+		src/alias/local/command_alias.c	\
+		src/alias/init_aliases_list.c	\
+		src/alias/local/show_one_alias.c	\
+		src/alias/global/alias_glob.c	\
+		src/alias/global/fill_list_since_file.c	\
+		src/alias/global/recup_path_alias.c	\
+		src/alias/global/split_file.c	\
+		src/alias/global/verify_file.c	\
 		src/builtin/builtin_redirections/builtin_redirection.c	\
 		src/builtin/builtin_redirections/double_right_builtin_redirection.c	\
 		src/builtin/builtin_redirections/pip_builtin_redirection.c	\
