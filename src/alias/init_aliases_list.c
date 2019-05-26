@@ -20,9 +20,9 @@ aliase_t *init_aliases(void)
     if ((aliases->command = my_strdup("vim")) == NULL)
         return NULL;
     aliases->next = NULL;
-    if ((file = _42rc_is_filled()) == NULL)
+    if ((file = _alias_is_filled()) == NULL)
         return aliases;
-    if (fill_42rc_since_file(aliases, file) == NULL) {
+    if (fill_alias_since_file(aliases, file) == NULL) {
         delete_aliases(aliases);
         return NULL;
     }

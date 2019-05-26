@@ -28,7 +28,7 @@ bool bad_alias_line(char *alias)
     return false;
 }
 
-aliase_t *fill_42rc_since_file(aliase_t *alias, FILE *file)
+aliase_t *fill_alias_since_file(aliase_t *alias, FILE *file)
 {
     size_t len = 0;
     char *all_alias = NULL;

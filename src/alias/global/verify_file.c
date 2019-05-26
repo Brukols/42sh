@@ -7,7 +7,7 @@
 
 #include "shell.h"
 
-FILE *_42rc_is_filled(void)
+FILE *_alias_is_filled(void)
 {
     FILE *stream = NULL;
     int first_char = 0;
