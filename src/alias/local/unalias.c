@@ -36,7 +36,8 @@ aliase_t *unalias(t_command *command, t_info *shell, bool *unalias)
         return shell->aliases;
     for (; shell->aliases->prev; shell->aliases = shell->aliases->prev);
     for (; shell->aliases->next; shell->aliases = shell->aliases->next) {
-        if (my_strcmp(shell->aliases->next->new_name, command->tab_command[1]) == 0) {
+        if (my_strcmp(shell->aliases->next->new_name, \
+command->tab_command[1]) == 0) {
             (*unalias) = true;
             return delete_alias(shell->aliases);
         }
