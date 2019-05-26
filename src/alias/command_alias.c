@@ -63,11 +63,15 @@ aliase_t *add_command_alias(t_command *command, t_info *shell, bool *change)
     }
     if (bad_alias_line(shell->command_line) == false) {
         (*change) = true;
-        if ((new_command = init_new_command(command->tab_command)) == NULL)
+        if ((new_command = init_new_command(command->tab_command)) == NULL) {
+            delete_all(shell);
             exit(84);
+        }
         if ((shell->aliases = add_alias_in_list(command->tab_command[1], \
-new_command, shell->aliases)) == NULL)
+new_command, shell->aliases)) == NULL) {
+            delete_all(shell);
             exit(84);
+        }
     }
     free(new_command);
     return shell->aliases;

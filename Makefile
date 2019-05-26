@@ -71,13 +71,14 @@ SRC	=	src/main.c	\
 		src/history/open_file_history.c	\
 		src/history/recup_last_command.c	\
 		src/history/recup_path_history.c	\
-		src/free/delete_all.c	\
-		src/free/delete_builtin.c	\
-		src/free/delete_list.c	\
-		src/free/reset_comma.c	\
-		src/free/reset_command.c	\
-		src/free/reset_redirect.c	\
-		src/free/free_variable.c	\
+		src/delete/delete_aliases.c	\
+		src/delete/delete_all.c	\
+		src/delete/delete_builtin.c	\
+		src/delete/delete_list.c	\
+		src/delete/reset_comma.c	\
+		src/delete/reset_command.c	\
+		src/delete/reset_redirect.c	\
+		src/delete/delete_var.c	\
 		src/list/create_list.c	\
 		src/list/add_to_list.c	\
 		src/list/create_command.c	\

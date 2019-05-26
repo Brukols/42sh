@@ -36,8 +36,10 @@ t_command *change_command_line(t_info *shell, t_command *command)
 {
     for (int i = 0; command->tab_command[i]; i++) {
         if ((command->tab_command = new_line_command(i, \
-shell->aliases, command->tab_command)) == NULL)
+shell->aliases, command->tab_command)) == NULL) {
+            delete_all(shell);
             exit(84);
+        }
     }
     return command;
 }

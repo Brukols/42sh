@@ -9,11 +9,12 @@
 
 t_builtin **delete_builtin(t_builtin **builtin)
 {
+    if (!builtin)
+        return (NULL);
     for (int i = 0; builtin != NULL && builtin[i] != NULL; i++) {
         free(builtin[i]->name);
         free(builtin[i]);
     }
-    if (builtin)
-        free(builtin);
+    free(builtin);
     return (NULL);
 }

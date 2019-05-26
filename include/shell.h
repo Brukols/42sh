@@ -155,7 +155,7 @@ int left_redirection(t_info *shell, t_command *command);
 void test_segfault(t_info *shell, char *error);
 int wait_end_all_exec(t_info *shell);
 
-/* FREE FT */
+/* DELETE FT */
 void *delete_all(t_info *shell);
 void delete_command(t_command *command);
 t_list *delete_list(t_list *list);
@@ -163,7 +163,8 @@ t_builtin **delete_builtin(t_builtin **builtin);
 void reset_comma(t_info *shell);
 void reset_command(t_info *shell);
 void reset_redirect(t_info *shell);
-void free_variable(t_variable *);
+void delete_var(t_variable *var);
+void delete_aliases(aliase_t *aliases);
 
 /* HISTORY */
 int add_in_history(char *command_line);
