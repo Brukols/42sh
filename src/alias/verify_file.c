@@ -12,8 +12,11 @@ FILE *_42rc_is_filled(void)
     FILE *stream = NULL;
     int first_char = 0;
     int fd = 0;
+    char *path = recup_path_alias();
 
-    if ((fd = open(".alias", O_RDONLY | O_APPEND | O_CREAT, S_IRWXU \
+    if (path == NULL)
+        return NULL;
+    if ((fd = open(path, O_RDONLY | O_APPEND | O_CREAT, S_IRWXU \
 | S_IRWXG | S_IRWXO)) == -1)
         exit(84);
     stream = fdopen(fd, "r");

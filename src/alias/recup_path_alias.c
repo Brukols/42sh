@@ -1,16 +1,16 @@
 /*
-** EPITECH PROJECT, 2018
+** EPITECH PROJECT, 2019
 ** 42sh
 ** File description:
-** recup_path_history
+** alias
 */
 
 #include "shell.h"
 
-char *recup_path_history(void)
+char *recup_path_alias(void)
 {
     char *beg = getenv("HOME");
-    char *end = "/.history_42sh";
+    char *end = "/.alias";
     char *buffer;
 
     if (beg == NULL)

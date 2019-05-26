@@ -210,6 +210,8 @@ aliase_t *add_command_alias(t_command *command, t_info *shell, bool *);
 char **new_line_command(int i, aliase_t *alias, char **tab_command);
 char **remplace_with_alias(aliase_t *alias, char **tab_command, int i);
 void display_alias(aliase_t *);
+char *recup_path_alias(void);
+
 /* LIST */
 t_list *create_list(void);
 t_command *create_command(int len_word, char *str, int i);
