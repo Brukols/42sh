@@ -630,7 +630,7 @@ CLEAN=""
 TESTS=
   echo 'ls \; ls'
   echo '\ls'
-  echo 'ls \\ '
+  echo '\\'
 [714-END]
 
 [715]
