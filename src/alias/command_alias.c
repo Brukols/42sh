@@ -52,6 +52,29 @@ bool bad_new_alias_line(char **tab_command)
     return false;
 }
 
+bool show_one_alias(char **tab_command, t_info *shell)
+{
+    aliase_t *alias = shell->aliases;
+
+    if (my_arraylen(tab_command) != 2)
+        return false;
+    if (my_strcmp(tab_command[0], "alias") != 0)
+        return false;
+    for (; alias->prev; alias = alias->prev);
+    for (; alias->next; alias = alias->next) {
+        if (my_strcmp(tab_command[1], alias->new_name) == 0) {
+            my_putstr(alias->command);
+            my_putchar('\n');
+            return true;
+        }
+    }
+    if (my_strcmp(tab_command[1], alias->new_name) == 0) {
+            my_putstr(alias->command);
+            return true;
+    }
+    return false;
+}
+
 aliase_t *add_command_alias(t_command *command, t_info *shell, bool *change)
 {
     char *new_command = NULL;
@@ -59,6 +82,10 @@ aliase_t *add_command_alias(t_command *command, t_info *shell, bool *change)
     if (bad_new_alias_line(command->tab_command) == false) {
         (*change) = true;
         display_alias(shell->aliases);
+        return shell->aliases;
+    }
+    if (show_one_alias(command->tab_command, shell) == true) {
+        (*change) = true;
         return shell->aliases;
     }
     if (bad_alias_line(shell->command_line) == false) {
