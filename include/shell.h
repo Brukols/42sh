@@ -213,6 +213,7 @@ char **replace_with_alias(aliase_t *alias, char **tab_command, int i);
 void display_alias(aliase_t *);
 char *recup_path_alias(void);
 bool show_one_alias(char **tab_command, t_info *shell);
+aliase_t *unalias(t_command *command, t_info *shell, bool *unalias);
 
 /* LIST */
 t_list *create_list(void);

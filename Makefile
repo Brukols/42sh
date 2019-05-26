@@ -17,6 +17,7 @@ SRC	=	src/main.c	\
 		src/alias/local/command_alias.c	\
 		src/alias/init_aliases_list.c	\
 		src/alias/local/show_one_alias.c	\
+		src/alias/local/unalias.c	\
 		src/alias/global/alias_glob.c	\
 		src/alias/global/fill_list_since_file.c	\
 		src/alias/global/recup_path_alias.c	\
