@@ -205,7 +205,7 @@ bool bad_alias_line(char *alias);
 aliase_t *add_alias_in_list(char *new_name, char *command, aliase_t *alias);
 char *split_alias_value(char *all, int i);
 char *split_alias_name(char *all, int *i);
-t_command *alias(t_command *command, t_info *shell);
+t_command *alias(t_command *command, t_info *);
 t_command *change_command_line(t_info *shell, t_command *command);
 aliase_t *add_command_alias(t_command *command, t_info *shell, bool *);
 char **new_line_command(int i, aliase_t *alias, char **tab_command);

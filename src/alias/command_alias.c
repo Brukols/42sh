@@ -38,6 +38,7 @@ char *init_new_command(char **tab_command)
         for (int j = 0; tab_command[i][j]; j++, k++)
             new_command[k] = tab_command[i][j];
         new_command[k] = ' ';
+        k++;
     }
     new_command[k] = '\0';
     return new_command;

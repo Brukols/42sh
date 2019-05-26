@@ -16,6 +16,8 @@ shell, &command_alias)) == NULL)
         return EXIT_ERROR;
     if (command_alias == true)
         return RETURN_SUCCESS;
+    if ((command = change_command_line(shell, command)) == NULL)
+        return EXIT_ERROR;
     if ((command = alias(command, shell)) == NULL)
         return EXIT_ERROR;
     command->tab_command = apply_globbings(command->tab_command);
